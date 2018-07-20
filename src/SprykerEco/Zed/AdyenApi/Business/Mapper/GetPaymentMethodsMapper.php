@@ -5,10 +5,10 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEco\Zed\AdyenApi\Business;
+namespace SprykerEco\Zed\AdyenApi\Business\Mapper;
 
 
-interface AdyenApiFacadeInterface
+class GetPaymentMethodsMapper
 {
-    public function performGetPaymentMethodsCall();
+
 }

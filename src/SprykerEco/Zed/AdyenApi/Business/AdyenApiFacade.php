@@ -14,4 +14,8 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
  */
 class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
 {
+    public function performGetPaymentMethodsCall()
+    {
+
+    }
 }

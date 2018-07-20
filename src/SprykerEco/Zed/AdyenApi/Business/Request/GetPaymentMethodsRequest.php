@@ -5,10 +5,8 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEco\Zed\AdyenApi\Business;
+namespace SprykerEco\Zed\AdyenApi\Business\Request;
 
-
-interface AdyenApiFacadeInterface
+class GetPaymentMethodsRequest extends AbstarctRequest implements RequestInterface
 {
-    public function performGetPaymentMethodsCall();
 }

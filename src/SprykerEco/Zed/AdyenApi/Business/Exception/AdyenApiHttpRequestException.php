@@ -5,10 +5,10 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEco\Zed\AdyenApi\Business;
+namespace SprykerEco\Zed\AdyenApi\Business\Exception;
 
+use Exception;
 
-interface AdyenApiFacadeInterface
+class AdyenApiHttpRequestException extends Exception
 {
-    public function performGetPaymentMethodsCall();
 }

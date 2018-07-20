@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace SprykerEco\Zed\AdyenApi\Business\Mapper;
+
+use Generated\Shared\Transfer\QuoteTransfer;
+
+interface MapperInterface
+{
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return string[]
+     */
+    public function buildRequest(QuoteTransfer $quoteTransfer): array;
+}
