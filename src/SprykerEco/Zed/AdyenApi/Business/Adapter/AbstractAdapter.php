@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MIT License
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
@@ -13,15 +13,24 @@ use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\StreamInterface;
 use SprykerEco\Zed\AdyenApi\AdyenApiConfig;
 use SprykerEco\Zed\AdyenApi\Business\Exception\AdyenApiHttpRequestException;
+use SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceInterface;
 
 abstract class AbstractAdapter implements AdapterInterface
 {
     protected const DEFAULT_TIMEOUT = 45;
+    protected const HEADER_CONTENT_TYPE_KEY = 'Content-Type';
+    protected const HEADER_CONTENT_TYPE_VALUE = 'application/json';
+    protected const HEADER_X_API_KEY = 'X-API-Key';
 
     /**
      * @var \SprykerEco\Zed\AdyenApi\AdyenApiConfig
      */
     protected $config;
+
+    /**
+     * @var \SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceInterface
+     */
+    protected $encodingService;
 
     /**
      * @var \GuzzleHttp\Client
@@ -31,18 +40,26 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * @return string
      */
-    abstract protected function getUrl();
+    abstract protected function getUrl(): string;
 
     /**
      * @param \SprykerEco\Zed\AdyenApi\AdyenApiConfig $config
+     * @param \SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceInterface $encodingService
      */
-    public function __construct(AdyenApiConfig $config)
-    {
+    public function __construct(
+        AdyenApiConfig $config,
+        AdyenApiToUtilEncodingServiceInterface $encodingService
+    ) {
         $this->client = new Client([
             RequestOptions::TIMEOUT => static::DEFAULT_TIMEOUT,
+            RequestOptions::HEADERS => [
+                static::HEADER_CONTENT_TYPE_KEY => static::HEADER_CONTENT_TYPE_VALUE,
+                static::HEADER_X_API_KEY => $config->getApiKey(),
+            ]
         ]);
 
         $this->config = $config;
+        $this->encodingService = $encodingService;
     }
 
     /**
@@ -52,7 +69,7 @@ abstract class AbstractAdapter implements AdapterInterface
      */
     public function sendRequest(array $data): StreamInterface
     {
-        $options[RequestOptions::FORM_PARAMS] = $data;
+        $options[RequestOptions::BODY] = $this->encodingService->encodeJson($data);
 
         return $this->send($options);
     }

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<transfers xmlns="spryker:transfer-01"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+
+    <!--- Request Transfers -->
+
+    <transfer name="AdyenApiRequest">
+        <property name="paymentMethodsRequest" type="AdyenApiGetPaymentMethodsRequest" />
+    </transfer>
+
+    <transfer name="AdyenApiGetPaymentMethodsRequest">
+        <property name="merchantAccount" type="string" />
+        <property name="countryCode" type="string" />
+        <property name="amount" type="AdyenApiAmount" />
+        <property name="channel" type="string" />
+    </transfer>
+
+    <transfer name="AdyenApiAmount">
+        <property name="currency" type="string" />
+        <property name="value" type="int" />
+    </transfer>
+
+
+    <!--- Response Transfers -->
+
+    <transfer name="AdyenApiResponse">
+        <property name="paymentMethods" type="AdyenApiPaymentMethod[]" />
+    </transfer>
+
+    <transfer name="AdyenApiPaymentMethod">
+        <property name="name" type="string" />
+        <property name="type" type="string" />
+        <property name="details" type="AdyenApiPaymentMethodsDetails[]" />
+    </transfer>
+
+    <transfer name="AdyenApiPaymentMethodsDetails">
+        <property name="key" type="string" />
+        <property name="type" type="string" />
+        <property name="optional" type="bool" />
+    </transfer>
+
+</transfers>

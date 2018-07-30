@@ -1,19 +1,19 @@
 <?php
 
 /**
- * MIT License
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
 namespace SprykerEco\Zed\AdyenApi\Business\Request;
 
-use Generated\Shared\Transfer\QuoteTransfer;
-use Spryker\Shared\Kernel\Transfer\TransferInterface;
+use Generated\Shared\Transfer\AdyenApiRequestTransfer;
+use Generated\Shared\Transfer\AdyenApiResponseTransfer;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\AdapterInterface;
 use SprykerEco\Zed\AdyenApi\Business\Converter\ConverterInterface;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\MapperInterface;
 
-abstract class AbstarctRequest
+abstract class AbstarctRequest implements RequestInterface
 {
     /**
      * @var \SprykerEco\Zed\AdyenApi\Business\Adapter\AdapterInterface
@@ -46,13 +46,13 @@ abstract class AbstarctRequest
     }
 
     /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
      *
-     * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    public function request(QuoteTransfer $quoteTransfer): TransferInterface
+    public function request(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer
     {
-        $requestData = $this->mapper->buildRequest($quoteTransfer);
+        $requestData = $this->mapper->buildRequest($requestTransfer);
 
         return $this->sendRequest($requestData);
     }
@@ -60,9 +60,9 @@ abstract class AbstarctRequest
     /**
      * @param array $requestData
      *
-     * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    protected function sendRequest(array $requestData): TransferInterface
+    protected function sendRequest(array $requestData): AdyenApiResponseTransfer
     {
         $response = $this->adapter->sendRequest($requestData);
 
