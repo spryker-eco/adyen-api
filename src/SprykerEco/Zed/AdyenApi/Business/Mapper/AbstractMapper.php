@@ -7,7 +7,6 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Mapper;
 
-use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 use SprykerEco\Zed\AdyenApi\AdyenApiConfig;
 
 abstract class AbstractMapper implements MapperInterface

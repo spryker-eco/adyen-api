@@ -7,7 +7,6 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Mapper;
 
-use Generated\Shared\Transfer\AdyenApiGetPaymentMethodsRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 
 class GetPaymentMethodsMapper extends AbstractMapper implements MapperInterface

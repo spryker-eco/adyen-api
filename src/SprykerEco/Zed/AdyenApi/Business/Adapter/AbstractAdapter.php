@@ -55,7 +55,7 @@ abstract class AbstractAdapter implements AdapterInterface
             RequestOptions::HEADERS => [
                 static::HEADER_CONTENT_TYPE_KEY => static::HEADER_CONTENT_TYPE_VALUE,
                 static::HEADER_X_API_KEY => $config->getApiKey(),
-            ]
+            ],
         ]);
 
         $this->config = $config;
