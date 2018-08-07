@@ -9,15 +9,15 @@ namespace SprykerEco\Zed\AdyenApi\Business\Request;
 
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 
-class GetPaymentMethodsRequest extends AbstractRequest
+class MakePaymentRequest extends AbstractRequest
 {
     /**
      * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
      *
      * @return void
      */
-    protected function setMethod(AdyenApiRequestTransfer $requestTransfer)
+    protected function setMethod(AdyenApiRequestTransfer $requestTransfer): void
     {
-        $this->method = $this->config->getPaymentMethodsKey();
+        $this->method = $requestTransfer->getMakePaymentRequest()->getPaymentSelection();
     }
 }

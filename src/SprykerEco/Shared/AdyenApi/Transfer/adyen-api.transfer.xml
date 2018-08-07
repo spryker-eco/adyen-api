@@ -7,6 +7,7 @@
 
     <transfer name="AdyenApiRequest">
         <property name="paymentMethodsRequest" type="AdyenApiGetPaymentMethodsRequest" />
+        <property name="makePaymentRequest" type="AdyenApiMakePaymentRequest" />
     </transfer>
 
     <transfer name="AdyenApiGetPaymentMethodsRequest">
@@ -16,9 +17,37 @@
         <property name="channel" type="string" />
     </transfer>
 
+    <transfer name="AdyenApiMakePaymentRequest">
+        <property name="merchantAccount" type="string" />
+        <property name="reference" type="string" />
+        <property name="amount" type="AdyenApiAmount" />
+        <property name="paymentMethodAdyenCreditCard" type="AdyenApiCreditCardPaymentMethod" />
+        <property name="returnUrl" type="string" />
+        <property name="browserInfo" type="AdyenApiBrowserInfo" />
+        <property name="additionalData" type="AdyenApiRequestAdditionalData" />
+        <property name="paymentSelection" type="string" />
+    </transfer>
+
+    <transfer name="AdyenApiCreditCardPaymentMethod">
+        <property name="type" type="string" />
+        <property name="encryptedCardNumber" type="string" />
+        <property name="encryptedExpiryMonth" type="string" />
+        <property name="encryptedExpiryYear" type="string" />
+        <property name="encryptedSecurityCode" type="string" />
+    </transfer>
+
     <transfer name="AdyenApiAmount">
         <property name="currency" type="string" />
         <property name="value" type="int" />
+    </transfer>
+
+    <transfer name="AdyenApiBrowserInfo">
+        <property name="userAgent" type="string" />
+        <property name="acceptHeader" type="string" />
+    </transfer>
+
+    <transfer name="AdyenApiRequestAdditionalData">
+        <property name="executeThreeD" type="string" />
     </transfer>
 
 
@@ -26,6 +55,7 @@
 
     <transfer name="AdyenApiResponse">
         <property name="paymentMethods" type="AdyenApiPaymentMethod[]" />
+        <property name="makePayment" type="AdyenApiMakePaymentResponse" />
     </transfer>
 
     <transfer name="AdyenApiPaymentMethod">
@@ -38,6 +68,44 @@
         <property name="key" type="string" />
         <property name="type" type="string" />
         <property name="optional" type="bool" />
+        <property name="items" type="AdyenApiPaymentMethodsDetailsItem[]" />
+    </transfer>
+
+    <transfer name="AdyenApiPaymentMethodsDetailsItem">
+        <property name="id" type="string" />
+        <property name="name" type="string" />
+    </transfer>
+
+    <transfer name="AdyenApiMakePaymentResponse">
+        <property name="pspReference" type="string" />
+        <property name="resultCode" type="string" />
+        <property name="refusalReason" type="string" />
+        <property name="additionalData" type="AdyenApiMakePaymentResponseAdditional" />
+        <property name="details" type="AdyenApiMakePaymentResponseDetails[]" />
+        <property name="paymentData" type="string" />
+        <property name="redirect" type="AdyenApiMakePaymentResponseRedirect" />
+    </transfer>
+
+    <transfer name="AdyenApiMakePaymentResponseAdditional">
+        <property name="liabilityShift" type="string" />
+        <property name="refusalReasonRaw" type="string" />
+    </transfer>
+
+    <transfer name="AdyenApiMakePaymentResponseDetails">
+        <property name="key" type="string" />
+        <property name="type" type="string" />
+    </transfer>
+
+    <transfer name="AdyenApiMakePaymentResponseRedirect">
+        <property name="data" type="AdyenApiMakePaymentResponseRedirectData" />
+        <property name="method" type="string" />
+        <property name="url" type="string" />
+    </transfer>
+
+    <transfer name="AdyenApiMakePaymentResponseRedirectData">
+        <property name="PaReq" type="string" />
+        <property name="TermUrl" type="string" />
+        <property name="MD" type="string" />
     </transfer>
 
 </transfers>

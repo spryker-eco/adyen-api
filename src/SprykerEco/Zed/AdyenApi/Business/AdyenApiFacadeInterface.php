@@ -22,5 +22,17 @@ interface AdyenApiFacadeInterface
      *
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    public function performGetPaymentMethodsCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
+    public function performGetPaymentMethodsApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
+
+    /**
+     * Specification:
+     * - Make API call to Adyen to make payment.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performMakePaymentApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
 }

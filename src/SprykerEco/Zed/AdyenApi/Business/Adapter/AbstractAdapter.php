@@ -15,7 +15,7 @@ use SprykerEco\Zed\AdyenApi\AdyenApiConfig;
 use SprykerEco\Zed\AdyenApi\Business\Exception\AdyenApiHttpRequestException;
 use SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceInterface;
 
-abstract class AbstractAdapter implements AdapterInterface
+abstract class AbstractAdapter implements AdyenApiAdapterInterface
 {
     protected const DEFAULT_TIMEOUT = 45;
     protected const HEADER_CONTENT_TYPE_KEY = 'Content-Type';

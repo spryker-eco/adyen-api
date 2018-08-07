@@ -8,8 +8,9 @@
 namespace SprykerEco\Zed\AdyenApi\Business\Mapper;
 
 use SprykerEco\Zed\AdyenApi\AdyenApiConfig;
+use SprykerEco\Zed\AdyenApi\Business\Validator\AdyenApiRequestValidatorInterface;
 
-abstract class AbstractMapper implements MapperInterface
+abstract class AbstractMapper
 {
     /**
      * @var \SprykerEco\Zed\AdyenApi\AdyenApiConfig
@@ -17,10 +18,19 @@ abstract class AbstractMapper implements MapperInterface
     protected $config;
 
     /**
-     * @param \SprykerEco\Zed\AdyenApi\AdyenApiConfig $config
+     * @var \SprykerEco\Zed\AdyenApi\Business\Validator\AdyenApiRequestValidatorInterface
      */
-    public function __construct(AdyenApiConfig $config)
-    {
+    protected $validator;
+
+    /**
+     * @param \SprykerEco\Zed\AdyenApi\AdyenApiConfig $config
+     * @param \SprykerEco\Zed\AdyenApi\Business\Validator\AdyenApiRequestValidatorInterface $validator
+     */
+    public function __construct(
+        AdyenApiConfig $config,
+        AdyenApiRequestValidatorInterface $validator
+    ) {
         $this->config = $config;
+        $this->validator = $validator;
     }
 }

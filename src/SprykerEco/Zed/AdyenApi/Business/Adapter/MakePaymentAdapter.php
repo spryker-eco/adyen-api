@@ -7,13 +7,13 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Adapter;
 
-class GetPaymentMethodsAdapter extends AbstractAdapter implements AdyenApiAdapterInterface
+class MakePaymentAdapter extends AbstractAdapter implements AdyenApiAdapterInterface
 {
     /**
      * @return string
      */
     protected function getUrl(): string
     {
-        return $this->config->getPaymentMethodsActionUrl();
+        return $this->config->getMakePaymentActionUrl();
     }
 }

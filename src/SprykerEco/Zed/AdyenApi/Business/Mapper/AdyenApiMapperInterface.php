@@ -9,7 +9,12 @@ namespace SprykerEco\Zed\AdyenApi\Business\Mapper;
 
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 
-interface MapperInterface
+interface AdyenApiMapperInterface
 {
+    /**
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return array
+     */
     public function buildRequest(AdyenApiRequestTransfer $requestTransfer): array;
 }

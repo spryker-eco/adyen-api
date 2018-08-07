@@ -10,7 +10,7 @@ namespace SprykerEco\Zed\AdyenApi\Business\Converter;
 use Generated\Shared\Transfer\AdyenApiResponseTransfer;
 use Psr\Http\Message\StreamInterface;
 
-interface ConverterInterface
+interface AdyenApiConverterInterface
 {
     /**
      * @param \Psr\Http\Message\StreamInterface $response

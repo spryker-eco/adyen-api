@@ -10,7 +10,7 @@ namespace SprykerEco\Zed\AdyenApi\Business\Request;
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiResponseTransfer;
 
-interface RequestInterface
+interface AdyenApiRequestInterface
 {
     /**
      * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer

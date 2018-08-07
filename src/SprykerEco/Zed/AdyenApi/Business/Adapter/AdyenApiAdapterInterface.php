@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\AdyenApi\Business\Adapter;
 
 use Psr\Http\Message\StreamInterface;
 
-interface AdapterInterface
+interface AdyenApiAdapterInterface
 {
     /**
      * @param array $data

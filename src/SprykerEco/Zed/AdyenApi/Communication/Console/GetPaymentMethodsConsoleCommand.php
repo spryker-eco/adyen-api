@@ -15,9 +15,9 @@ use SprykerEco\Zed\AdyenApi\Business\AdyenApiFacade;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class TestConsoleCommand extends Console
+class GetPaymentMethodsConsoleCommand extends Console
 {
-    const COMMAND_NAME = 'adyen-api:test';
+    const COMMAND_NAME = 'adyen-api:test:get-payment-methods';
 
     /**
      * @return void
@@ -25,7 +25,7 @@ class TestConsoleCommand extends Console
     protected function configure()
     {
         $this->setName(static::COMMAND_NAME);
-        $this->setDescription('Command for test Facade');
+        $this->setDescription('AdyenApi Test Facade methods getPaymentMethods');
     }
 
     /**
@@ -37,7 +37,7 @@ class TestConsoleCommand extends Console
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $app = new AdyenApiFacade();
-        $response = $app->performGetPaymentMethodsCall(
+        $response = $app->performGetPaymentMethodsApiCall(
             (new AdyenApiRequestTransfer())
                 ->setPaymentMethodsRequest(
                     (new AdyenApiGetPaymentMethodsRequestTransfer())
@@ -51,7 +51,6 @@ class TestConsoleCommand extends Console
                         ->setChannel('Web')
                 )
         );
-
-        print_r($response->toArray(true, true));
+        echo json_encode($response->toArray(true, true), JSON_PRETTY_PRINT);
     }
 }

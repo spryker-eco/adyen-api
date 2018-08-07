@@ -5,11 +5,13 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEco\Zed\AdyenApi\Business\Converter;
+namespace SprykerEco\Zed\AdyenApi\Business\Converter\GetPaymentMethods;
 
 use Generated\Shared\Transfer\AdyenApiResponseTransfer;
+use SprykerEco\Zed\AdyenApi\Business\Converter\AbstractConverter;
+use SprykerEco\Zed\AdyenApi\Business\Converter\AdyenApiConverterInterface;
 
-class GetPaymentMethodsConverter extends AbstractConverter implements ConverterInterface
+class GetPaymentMethodsConverter extends AbstractConverter implements AdyenApiConverterInterface
 {
     /**
      * @param array $response
@@ -18,6 +20,6 @@ class GetPaymentMethodsConverter extends AbstractConverter implements ConverterI
      */
     protected function getResponseTransfer(array $response): AdyenApiResponseTransfer
     {
-        return (new AdyenApiResponseTransfer())->fromArray($response);
+        return (new AdyenApiResponseTransfer())->fromArray($response, true);
     }
 }

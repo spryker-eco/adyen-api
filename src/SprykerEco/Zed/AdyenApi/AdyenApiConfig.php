@@ -12,6 +12,17 @@ use SprykerEco\Shared\AdyenApi\AdyenApiConstants;
 
 class AdyenApiConfig extends AbstractBundleConfig
 {
+    protected const ADYEN_GET_PAYMENT_METHODS_KEY = 'adyenGetPaymentMethods';
+    protected const ADYEN_CREDIT_CARD = 'adyenCreditCard';
+
+    /**
+     * @return string
+     */
+    public function getApiKey(): string
+    {
+        return $this->get(AdyenApiConstants::API_KEY);
+    }
+
     /**
      * @return string
      */
@@ -23,8 +34,24 @@ class AdyenApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getApiKey(): string
+    public function getMakePaymentActionUrl(): string
     {
-        return $this->get(AdyenApiConstants::API_KEY);
+        return $this->get(AdyenApiConstants::MAKE_PAYMENT_ACTION_URL);
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentMethodsKey(): string
+    {
+        return static::ADYEN_GET_PAYMENT_METHODS_KEY;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreditCardPaymentMethod(): string
+    {
+        return static::ADYEN_CREDIT_CARD;
     }
 }
