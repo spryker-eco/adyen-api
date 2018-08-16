@@ -18,22 +18,32 @@
     </transfer>
 
     <transfer name="AdyenApiMakePaymentRequest">
-        <property name="merchantAccount" type="string" />
-        <property name="reference" type="string" />
+        <!-- Required! -->
         <property name="amount" type="AdyenApiAmount" />
-        <property name="paymentMethodAdyenCreditCard" type="AdyenApiCreditCardPaymentMethod" />
+        <property name="merchantAccount" type="string" />
+        <property name="paymentMethod" type="array" />
+        <property name="reference" type="string" />  <!-- (transaction ID) max length 80 -->
         <property name="returnUrl" type="string" />
-        <property name="browserInfo" type="AdyenApiBrowserInfo" />
-        <property name="additionalData" type="AdyenApiRequestAdditionalData" />
-        <property name="paymentSelection" type="string" />
-    </transfer>
 
-    <transfer name="AdyenApiCreditCardPaymentMethod">
-        <property name="type" type="string" />
-        <property name="encryptedCardNumber" type="string" />
-        <property name="encryptedExpiryMonth" type="string" />
-        <property name="encryptedExpiryYear" type="string" />
-        <property name="encryptedSecurityCode" type="string" />
+        <!-- Optional -->
+        <property name="additionalData" type="array" />
+        <property name="billingAddress" type="AdyenApiAddress" />
+        <property name="captureDelayHours" type="int" />
+        <property name="channel" type="string" />   <!-- Web -->
+        <property name="company" type="AdyenApiCompany" />
+        <property name="countryCode" type="string" />   <!-- Format: ISO 3166-1 alpha-2 Example: NL or DE -->
+        <property name="dateOfBirth" type="string" />   <!-- Format ISO-8601: YYYY-MM-DD -->
+        <property name="deliveryAddress" type="AdyenApiAddress" />
+        <property name="deliveryDate" type="string" />   <!-- Format ISO 8601: YYYY-MM-DDThh:mm:ss.sssTZD Example: 2017-07-17T13:42:40.428+01:00 -->
+        <property name="orderReference" type="string" />
+        <property name="shopperEmail" type="string" />
+        <property name="shopperIP" type="string" />
+        <property name="shopperLocale" type="string" />  <!-- en_GB de_DE -->
+        <property name="shopperName" type="string" />  <!-- The shopper's full name and gender (if specified) -->
+        <property name="shopperReference" type="string" />  <!-- Customer ID -->
+        <property name="shopperStatement" type="string" />  <!-- The text to appear on the shopper's bank statement. -->
+        <property name="socialSecurityNumber" type="string" />  <!-- The shopper's social security number -->
+        <property name="telephoneNumber" type="string" />
     </transfer>
 
     <transfer name="AdyenApiAmount">
@@ -41,13 +51,22 @@
         <property name="value" type="int" />
     </transfer>
 
-    <transfer name="AdyenApiBrowserInfo">
-        <property name="userAgent" type="string" />
-        <property name="acceptHeader" type="string" />
+    <transfer name="AdyenApiAddress">
+        <property name="country" type="string" /> <!-- Required! The two-character country code of the address -->
+        <property name="city" type="string" />
+        <property name="postalCode" type="string" />
+        <property name="street" type="string" />
+        <property name="houseNumberOrName" type="string" />
+        <property name="stateOrProvince" type="string" />
     </transfer>
 
-    <transfer name="AdyenApiRequestAdditionalData">
-        <property name="executeThreeD" type="string" />
+    <transfer name="AdyenApiCompany">
+        <property name="homepage" type="string" />
+        <property name="name" type="string" />
+        <property name="registrationNumber" type="string" />
+        <property name="registryLocation" type="string" />
+        <property name="taxId" type="string" />
+        <property name="type" type="string" />
     </transfer>
 
 
@@ -61,51 +80,24 @@
     <transfer name="AdyenApiPaymentMethod">
         <property name="name" type="string" />
         <property name="type" type="string" />
-        <property name="details" type="AdyenApiPaymentMethodsDetails[]" />
-    </transfer>
-
-    <transfer name="AdyenApiPaymentMethodsDetails">
-        <property name="key" type="string" />
-        <property name="type" type="string" />
-        <property name="optional" type="bool" />
-        <property name="items" type="AdyenApiPaymentMethodsDetailsItem[]" />
-    </transfer>
-
-    <transfer name="AdyenApiPaymentMethodsDetailsItem">
-        <property name="id" type="string" />
-        <property name="name" type="string" />
+        <property name="details" type="array" />
     </transfer>
 
     <transfer name="AdyenApiMakePaymentResponse">
         <property name="pspReference" type="string" />
         <property name="resultCode" type="string" />
         <property name="refusalReason" type="string" />
-        <property name="additionalData" type="AdyenApiMakePaymentResponseAdditional" />
-        <property name="details" type="AdyenApiMakePaymentResponseDetails[]" />
+        <property name="additionalData" type="array" />
+        <property name="details" type="array" />
         <property name="paymentData" type="string" />
+        <property name="fraudResult" type="array" />
         <property name="redirect" type="AdyenApiMakePaymentResponseRedirect" />
     </transfer>
 
-    <transfer name="AdyenApiMakePaymentResponseAdditional">
-        <property name="liabilityShift" type="string" />
-        <property name="refusalReasonRaw" type="string" />
-    </transfer>
-
-    <transfer name="AdyenApiMakePaymentResponseDetails">
-        <property name="key" type="string" />
-        <property name="type" type="string" />
-    </transfer>
-
     <transfer name="AdyenApiMakePaymentResponseRedirect">
-        <property name="data" type="AdyenApiMakePaymentResponseRedirectData" />
+        <property name="data" type="array" />
         <property name="method" type="string" />
         <property name="url" type="string" />
-    </transfer>
-
-    <transfer name="AdyenApiMakePaymentResponseRedirectData">
-        <property name="PaReq" type="string" />
-        <property name="TermUrl" type="string" />
-        <property name="MD" type="string" />
     </transfer>
 
 </transfers>

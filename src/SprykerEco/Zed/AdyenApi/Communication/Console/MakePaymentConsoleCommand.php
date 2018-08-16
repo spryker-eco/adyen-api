@@ -8,7 +8,6 @@
 namespace SprykerEco\Zed\AdyenApi\Communication\Console;
 
 use Generated\Shared\Transfer\AdyenApiAmountTransfer;
-use Generated\Shared\Transfer\AdyenApiCreditCardPaymentMethodTransfer;
 use Generated\Shared\Transfer\AdyenApiMakePaymentRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 use Spryker\Zed\Kernel\Communication\Console\Console;
@@ -52,22 +51,23 @@ class MakePaymentConsoleCommand extends Console
             ->setMakePaymentRequest(
                 (new AdyenApiMakePaymentRequestTransfer())
                     ->setMerchantAccount('SprykerCOM')
-                    ->setReference('DE--3')
+                    ->setReference('1234556778890wqecdas123drrg')
                     ->setAmount(
                         (new AdyenApiAmountTransfer())
                             ->setCurrency('EUR')
                             ->setValue(1990)
                     )
-                    ->setPaymentMethodAdyenCreditCard(
-                        (new AdyenApiCreditCardPaymentMethodTransfer())
-                            ->setType('scheme')
-                            ->setEncryptedCardNumber('adyenjs_0_1_18$CUAltRzsyyFicv3BdY0naUcFbfWaYEEUieC+Me+QPf5b0sY0wKfetZ3oRks/lFA0NNzY9aYNxDY3ixc0Z97k2IvCsldR2Rqdv9y5cjr7B2pcusSd3Ul4+GbgY9oBADHVsM0L/Ch/YZ1kdqI1TCOPs+YcS4vsBKgFENKRyTtZ6B5RHxAAVblYiE/PqubPmYh3W89Ez6eO3dKvoJujtOM/Fxq4sLMcK80vyy4NfjH2h4onv/PwsTz1+kxp6yWiAF5RbHq3aca38Q0ao3BkhiVmdEgaO1S2l9cBb3zqE+KQaCdTgKp8cKhFrht9Ob2JIagaKrIN6RZcrMJyYJHaStkf1w==$i4F8X79AysX48ezopQpcr7G/4xSyzG/suTpF7dy2pxIDbgtzCw6WP5ptsUOz4zcJ9lsZuLmPGDpM4FvCoD16LdyDFwVE+HW6Rt00+VE6aeniT5XkruOEOkURPFEAPxSdq57J0Df5Rda/q+sLHLsYTTRH41oYeEMIDdG2vRC9l9AIXSsQIKrk4Ran4ff2xa0ZpLA8qJA9EIdUcqK8GR+YhDbndpLBIRyB7zs/Cz3iqkchGfeaK0VCXpVD0f/Kti2gpN91CJ2KGwzZ6z0vYTxq2WdKX6z+A2itlQ4rnNYPsJnqh9yOkxQDA5nYc8EQThKRsdUfhX4p4kyK10XE5fjFIXyfowhUKemN8nVx6Zkw+r27ZQUMyRPQoBWy8SZBZCtrs5BIgAAQU1F5sEuSz7jQ0t5DPecPvakwDFG3o9l6T92EhECBECL8ATL1uXZ6ZKRPkxuq8BZwGAzs62n0mCc=')
-                            ->setEncryptedExpiryMonth('adyenjs_0_1_18$YXrDSa8LwbDgdd85AFwodcldoTu4PsruGwz/FAgmuPAFKwwutF7IPN32EFSgltj2SsKvNq0K6CQt6wa/8GJ69XAZ2mAl4+jfgBZY46AngN+BGgYKzARwUv1xOpHmCp0NmQHPbjnAbe1JziGRWM5MbLWhWRsjpGSLfEKHbH/V+2mE/BcBLg+w1aZXs9CmTW9jxIzhmXFcJKklFr9SUjv85EsPSxKOMZauIoXZepzgCPO7gD2xzHAoi0/WWZ/z9cCCVFrj9jY1tWJrReuUiTo+cZYQPrPlOdXQJkalao7pin2tKBj992D4VAWJ0zTtI5HPn/nh7NjwWDn5t/TFRBYHrw==$9BG8/FfWSzBh3CyDZ91VOYVOHRcQSuI3ZHczCTOdp6ZBAKe5/Zk2wDWKTn2Enruxy3OqmFABEfplwVRQU41df5X7fe1vTUXdr7VAijds846V6RDmk+OBrNstre29cdE1lzOl3ZuyP66gvFckCKC4KGRRTMNrbEjy1Im2GExhEHAQInTc9rldUuWobRVEN5VthWLMxEwTQ9GSswx/BWz2pYJLDdOfApVOR5Ndq4k8z6A0p+c9iA9FW7eR1BNRn0mKAi9tWFhdwcdxOT8XMGexy4u21aICONQ3r5La6+vg9CtKMmAviRAkiuQsrIOFDeVxKyokEHdtgIvFR+z2ENtkL0U=')
-                            ->setEncryptedExpiryYear('adyenjs_0_1_18$VRjSz5I+547fwPFxoEJ2MqAqbQYTXE3RNq2H0zsmSU6CEOijSV0v/0plMnCDWP7dQd41LG9hJ4AhpxBEJnXTXOwLDlY4hBWBAIZKQRgfD3lrHQ6nURJme/F6ohbNjf3Bl2qV2RpKDcSRxwdk6tHKpVfgi3FzUMklDEXmVWW5awKDv2b3Av+PBL061Oesb9dEFMC/2feyV49bWsBENNtUjvUu0MYpFj73Yc2E2djFL30O2xTdGJ9w2Zr+b+UJStQl6ZcQSCBWgzUQ6zxHqKa7i2dGHKZhLf/1Y8W1ZXMv6uroAmawlGd0zZ7mggto7bu7DkhFMJhIalnOl+1kKDmXKA==$2JiU0zuyRDJZwlJJxEliaAJTva5ro3JxKkC+RWbWxLsuQ0gYmpvGibHvG40yOSUaLpQfqTAcaayO0v6/l5TgVIVoT6Fl8DvHnpZQg/pAap9SDYIxO28rz6ziJty8L9bPEQBmPKkB6CPGGEtO3X+d8vr81ncNGRSrsYd1cqt58DetqKecXThMCyegekdU61uMjW0bi08/7mZwX1prQrX9U20xz9mGs2h7SUMeJl5VGHYck6pb+UCkbdTiU204+s/pUzMh2DojcBgVpH52v8Zjk2XWQFCF1EanL5VUztdhl1KxxmNoS2cOkCupcMRwFcnJstIJy2C7KfGYcWn+flMSXCzs')
-                            ->setEncryptedSecurityCode('adyenjs_0_1_18$df93m/FtJiMfFVoz9c80xO4nocBj8ZPQ6eG1AzJN+P9YmfC8JNV3+1bXR8+F6wKqhbarfPb7V0+usSLwIMu/A4FsT7oYQfZwwYoSdsfpeHSqNaqhnumB82wsYxW5/Ej598YZbjSg8XzuXU7dEryuGOT2OVK9mj1cm9X7oi7Isyj+3ZdpQEWV3qY0KMk2t4j+WlGTavq+D7KjiK78QGE2L1skldtngxsz8JAfj0MVbKG4lnm+JoM7jctm5EGKCgj44VpY3/KS5xZ3/7Q3XoHpRrwqyyDllXf6gmi+EWxghG4V8ry++LQ0BlFDv7vlXFK9sHq9FTZJkwxpJxyvZ655EA==$kRi6IFVsvQ6bcCn0o0+cYKqnc8ROeF+hO7nsWOhWBoiDd5ZDodCXePlsgzPJi6N6kPEcxi5L1N1c5g365cLlnIcUqLHmEYZBA7LdG1OnVfHZh/Y8nMre38ejgQdIQaDqVoG7I4uXXYrQHhVbAm22vxSQQ+aMaIfNvrFJuSNflM2uo0ePK6amMGr15j+cr2hxY2gYWurDHfanzl5Klku3RMjsP4N3Zw5m6vknNgRL0cCSkEqOZXcHViV/V0beIYq9gakDlqttuouFJTQ2J3rlKe6Sf8/W6rTD8xLD6ipcrmK70cvOF/N26ewJMWyhJFKaMdAqrADC6Ykm7w==')
-                    )
-                    ->setPaymentSelection('adyenCreditCard')
                     ->setReturnUrl('http://www.de.adyen.local/checkout/payment')
+                    ->setPaymentMethod(
+                        [
+                            'type' => 'scheme',
+                            'encryptedCardNumber' => 'adyenjs_0_1_18$nkQObeZkpah5fKBQa3iB0d3SWqYqf6AzhAtWF4v2rpDY+SKdqt9ji2UXioWbA2ZtnzenFdvMe3lW+rdLLrfZnORkhYizcShDQ2ag4nfgrVG066kIVhCWrcxJkLa0xn1EFeWR3P9Dr7VZjWYosD8FotPJ4B2azq1/tmVu3BFA22+dVSxHXT5kh2YiuWbFkd4/PD+qcGZNQ80y41FuYEDAIOtwR+zyDN4G8IjFSg6OWng/hJpTjeMsJlLz7qcFq8G3MxjOce7LpvxMNJu57qfq7rA3WE1lFgIHKFqFLNycpjTEPiMSQpI43xy+h5PGtCp9CUt0VFVM/a3XeUzD2x9Ugw==$U9L8tOA+aGpY4BpowTu2DwTBUFBt4s8LGErZvkPG2AQx8el1rXj2AAvN/YwIH8X9+MVvGFazpF5tPXnB7922GEtt5D8bZpNO6VH8xL/XiwXUXw1MVay8ypY1pshItsaAWARtoDQqRQrP8p5Ss+IuzOaybkg/cZ4UPxgWY+VKPgI7GWfmb9zmyNq+aMYQiFEua6Tps3DtI31HiIMv9jA2fD1uW4iIhIBMLKj7hDEX2tGFlG5aDZ7lc47C3etGySvICVVho2b1H5/uZ0/9zcHlBpWc6SWJQujWLYk4gT/jpz77qlPNOuPZn/n9zrJc4HMENT8S7lcursi1tsrfl0mn+qnv8nSZXxGEeR9fCfUpAS1GsqyjBGX3vnMhzCbrRkhWiVvIwneXe7okxJOy1FYRxi7V7I7Rh9hCz5CVdmh+Mfzzb45UqLtSjdJgdo/kElZnbWZD7elyVDuS+WcdCLIWX45YbkgHDQ9/1PqfqcC9lA==',
+                            'encryptedExpiryMonth' => 'adyenjs_0_1_18$lXcsHhPdqBF3VryR8i0Du/HdAEg07rGrcG4BpTBOh+cxBs8Oh7KLBeLdrwbXgYEF5RYg6zSe3b4H5N5two8/cEzgWgnWIBtnNjXIEvoUjigYoi9WU6ZHZVBqDv70o7iDcYwKcW7aRFVsT6g9Iwj47Zc123PJINFK+kd/C+0DFhryTzwvNrD5uRb2qC6qJGHf7SkRfl/Kpt91/Fg7HzbxWFsIGkuajW/MLMnFkN08swvJ+/jBz1YzT2Y4ctUEk08qzOI9GDasxXZyMb78uLtcj6vZ95nBXUAYrg+Y7xSUR+JmeF9N3I/QZP1i07aXWIPSrP7xyWPiuWHY/xvhpqXc3g==$2eTGmksTclRyMqhV5b05nA3n/pB0uU2g8isF4IC3DqEwQbTh8BMPjMwO/JN4JTariZYpBW5DLxLxsvlRi5OEuqsJmbcK972hii7MdpwzvE/W4uh6ytra2KZIC0wJ2gA0o06j/OXMZdBcnptYSgobEgegatPNrfSi5R19nBIlFzwLKj7O1kyDTMRi7K1VgjEHSN3gKWw8Q5EbGNmhDOgRJgGmMOw+n+f7lXBsBKYIdWKbMGB3B8Hj7+2h7hSqsWEMjdgQIjZDY+20pX9hnQjuGfuDK1E3maVCtsvPhpOfjNz7MvvVyXc4HNcwXvYf/7rvaWunfxyQmRDDlxh7xQHzT183EEvVFbRQvHyb8Sspy/rpXw==',
+                            'encryptedExpiryYear' => 'adyenjs_0_1_18$NXWIZpyMtp7BzA498adeUj+ycHrcBKUJZC7L/cq2L9UgUFnbsb+fgtI41z/wCrv+eXBs0iGLsFz/oX6s+N8pbttB+3jOL1rGsVWSyypqVxFJ6H+R2wBqLrfeKkANswqR22NEafZn/7NdTcUZcsmByFPmcMyVxk/BgmpyaQOzkW4wQQTBYq7OqNq7GV7+9B3QKyN3yii9Pkzd2D+Ql2Q2lnsdhZ/gjolnlkDFCZmXbnwZr8Wz8zvJdJ7vIgurBPRWMBVNrvGGKE8fdL/U+VbfI4bi6YhNWmB878TURyLyIi1pMN2TqePIObT7cZByUs9wqEGIN+rcOYOsOqTt6HQyDQ==$66ycpdoAH1BvFmNDmuvl4X0tQ5aZN3RKQ4FULMcE4lMx7lUwCqbZQv7DjTL9IPEf8JzzGE/C8GPSaUujLYrc7JQUi1VYeUIymUYL2Mqxvb88a5/VI7ChUwnjhsQqJHvNldiLJ16/deqaEzCPZINXs0seLeNBTu/I/JYOFoox46cEHD+OruCWQCaHWn9A8bI+bdVXbuYMYG04VaZVG71q6HaB4zL1COeSxYBxkyF8niaJ49YnUdfkxVcz/3sImLNjCZjy2hwE7TaPkhoH78iSHHYurlOj1hvmT+IsRlQxv5MYBKLLS40yywSOZz2BPemjQnmyoKsMkRWuYX1cx+xXwCgskZqIECTOeeZ/si26s4P+SQc=',
+                            'encryptedSecurityCode' => 'adyenjs_0_1_18$e+/mnLrVvf9cxUXyRFVeE8Y3teD/kvRfQFNdP13nPuT/ciL7ZhnqEkeoDhdV1TgehddSoWnq/hxlS1iDFHaxDtZIFGCGFMQSw3wAUyHrvtzu8F37rGfQkpQdvZ7EcQemjDGjYv9Hk4evEcqhPvSX6iC/xTSyMRnJ50vQ6IhGcGSVEjKb0NFsRRAUiuTnfmj6jQNtrZkjNoxfJcg6Byx0kUC6p7PjV1DP61ZunNu4kXp9uaX1Yof6racaEykLepNtFsRwDyZyr/3B/LePXxqk/nQmnTE0dInb0gH4Dfs3WhWqzVLSNPVcmOcsxwQftd8ba5PJLknd4GZo3hPlkTL08w==$0fzyfTcWwjQhPV8/JkdCHItYi45F1AmTJ06mYxAIwm1rIq9GgqznLq0+0HxtWTtVfer0Rr19NEYULslYDp5baCdt6TP2N2YioC5lG5ZzEtQtQBXyFhT+cee5HCPBvEbeHTsv+kVCo6XhfhklDAj4tXlBTPzOlTKy1wl7qQQ7/DZIlRnDW+c/SkvxwxtvrjNSLVZVq3tAszZsVj6qNuqhM6NLVv2kNcCH70XGwYpTSZxgq0y+vl0COP8DuKYFGhyJwhzEWppVwa3vDT/3sQFLG3Pv3N0Z2r/nMGirJmok4yUYe27cRMAhi1YxupUPPjZfe1SOUx+4of8suIPsdfxDaMr1UEPpQO09X6ZL',
+                        ]
+                    )
+                    ->setAdditionalData(['executeThreeD' => 'true'])
             );
     }
 }

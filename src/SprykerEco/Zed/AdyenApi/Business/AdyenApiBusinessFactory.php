@@ -13,24 +13,13 @@ use SprykerEco\Zed\AdyenApi\Business\Adapter\AdyenApiAdapterInterface;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\GetPaymentMethodsAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\MakePaymentAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\AdyenApiConverterInterface;
-use SprykerEco\Zed\AdyenApi\Business\Converter\Collection\AdyenApiConverterCollection;
-use SprykerEco\Zed\AdyenApi\Business\Converter\Collection\AdyenApiConverterCollectionInterface;
-use SprykerEco\Zed\AdyenApi\Business\Converter\CreditCard\MakePaymentCreditCardConverter;
-use SprykerEco\Zed\AdyenApi\Business\Converter\GetPaymentMethods\GetPaymentMethodsConverter;
+use SprykerEco\Zed\AdyenApi\Business\Converter\GetPaymentMethodsConverter;
+use SprykerEco\Zed\AdyenApi\Business\Converter\MakePaymentConverter;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\AdyenApiMapperInterface;
-use SprykerEco\Zed\AdyenApi\Business\Mapper\Collection\AdyenApiMapperCollection;
-use SprykerEco\Zed\AdyenApi\Business\Mapper\Collection\AdyenApiMapperCollectionInterface;
-use SprykerEco\Zed\AdyenApi\Business\Mapper\CreditCard\MakePaymentCreditCardMapper;
-use SprykerEco\Zed\AdyenApi\Business\Mapper\GetPaymentMethods\GetPaymentMethodsMapper;
+use SprykerEco\Zed\AdyenApi\Business\Mapper\GetPaymentMethodsMapper;
+use SprykerEco\Zed\AdyenApi\Business\Mapper\MakePaymentMapper;
+use SprykerEco\Zed\AdyenApi\Business\Request\AdyenApiRequest;
 use SprykerEco\Zed\AdyenApi\Business\Request\AdyenApiRequestInterface;
-use SprykerEco\Zed\AdyenApi\Business\Request\GetPaymentMethodsRequest;
-use SprykerEco\Zed\AdyenApi\Business\Request\MakePaymentRequest;
-use SprykerEco\Zed\AdyenApi\Business\Validator\AdyenApiRequestValidatorInterface;
-use SprykerEco\Zed\AdyenApi\Business\Validator\AdyenApiResponseValidatorInterface;
-use SprykerEco\Zed\AdyenApi\Business\Validator\CreditCard\Request\MakePaymentCreditCardRequestValidator;
-use SprykerEco\Zed\AdyenApi\Business\Validator\CreditCard\Request\MakePaymentCreditCardResponseValidator;
-use SprykerEco\Zed\AdyenApi\Business\Validator\GetPaymentMethods\Request\GetPaymentMethodsRequestValidator;
-use SprykerEco\Zed\AdyenApi\Business\Validator\GetPaymentMethods\Request\GetPaymentMethodsResponseValidator;
 use SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceInterface;
 
 /**
@@ -43,10 +32,10 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
      */
     public function createGetPaymentMethodsRequest(): AdyenApiRequestInterface
     {
-        return new GetPaymentMethodsRequest(
+        return new AdyenApiRequest(
             $this->createGetPaymentMethodsAdapter(),
-            $this->createGetPaymentMethodsConverterCollection(),
-            $this->createGetPaymentMethodsMapperCollection(),
+            $this->createGetPaymentMethodsConverter(),
+            $this->createGetPaymentMethodsMapper(),
             $this->getConfig()
         );
     }
@@ -56,62 +45,18 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
      */
     public function createMakePaymentRequest(): AdyenApiRequestInterface
     {
-        return new MakePaymentRequest(
+        return new AdyenApiRequest(
             $this->createMakePaymentAdapter(),
-            $this->createMakePaymentConverterCollection(),
-            $this->createMakePaymentMapperCollection(),
+            $this->createMakePaymentConverter(),
+            $this->createMakePaymentMapper(),
             $this->getConfig()
         );
     }
 
     /**
-     * @return \SprykerEco\Zed\AdyenApi\Business\Converter\Collection\AdyenApiConverterCollectionInterface
-     */
-    protected function createGetPaymentMethodsConverterCollection(): AdyenApiConverterCollectionInterface
-    {
-        $collection = new AdyenApiConverterCollection();
-        $collection->add($this->getConfig()->getPaymentMethodsKey(), $this->createGetPaymentMethodsConverter());
-
-        return $collection;
-    }
-
-    /**
-     * @return \SprykerEco\Zed\AdyenApi\Business\Converter\Collection\AdyenApiConverterCollectionInterface
-     */
-    protected function createMakePaymentConverterCollection(): AdyenApiConverterCollectionInterface
-    {
-        $collection = new AdyenApiConverterCollection();
-        $collection->add($this->getConfig()->getCreditCardPaymentMethod(), $this->createMakePaymentCreditCardConverter());
-
-        return $collection;
-    }
-
-    /**
-     * @return \SprykerEco\Zed\AdyenApi\Business\Mapper\Collection\AdyenApiMapperCollectionInterface
-     */
-    protected function createGetPaymentMethodsMapperCollection(): AdyenApiMapperCollectionInterface
-    {
-        $collection = new AdyenApiMapperCollection();
-        $collection->add($this->getConfig()->getPaymentMethodsKey(), $this->createGetPaymentMethodsMapper());
-
-        return $collection;
-    }
-
-    /**
-     * @return \SprykerEco\Zed\AdyenApi\Business\Mapper\Collection\AdyenApiMapperCollectionInterface
-     */
-    protected function createMakePaymentMapperCollection(): AdyenApiMapperCollectionInterface
-    {
-        $collection = new AdyenApiMapperCollection();
-        $collection->add($this->getConfig()->getCreditCardPaymentMethod(), $this->createMakePaymentCreditCardMapper());
-
-        return $collection;
-    }
-
-    /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Adapter\AdyenApiAdapterInterface
      */
-    protected function createGetPaymentMethodsAdapter(): AdyenApiAdapterInterface
+    public function createGetPaymentMethodsAdapter(): AdyenApiAdapterInterface
     {
         return new GetPaymentMethodsAdapter(
             $this->getConfig(),
@@ -122,7 +67,7 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Adapter\AdyenApiAdapterInterface
      */
-    protected function createMakePaymentAdapter(): AdyenApiAdapterInterface
+    public function createMakePaymentAdapter(): AdyenApiAdapterInterface
     {
         return new MakePaymentAdapter(
             $this->getConfig(),
@@ -133,11 +78,10 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Converter\AdyenApiConverterInterface
      */
-    protected function createGetPaymentMethodsConverter(): AdyenApiConverterInterface
+    public function createGetPaymentMethodsConverter(): AdyenApiConverterInterface
     {
         return new GetPaymentMethodsConverter(
             $this->getConfig(),
-            $this->createGetPaymentMethodsResponseValidator(),
             $this->getUtilEncodingService()
         );
     }
@@ -145,11 +89,10 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Converter\AdyenApiConverterInterface
      */
-    protected function createMakePaymentCreditCardConverter(): AdyenApiConverterInterface
+    public function createMakePaymentConverter(): AdyenApiConverterInterface
     {
-        return new MakePaymentCreditCardConverter(
+        return new MakePaymentConverter(
             $this->getConfig(),
-            $this->createMakePaymentCreditCardResponseValidator(),
             $this->getUtilEncodingService()
         );
     }
@@ -157,61 +100,23 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Mapper\AdyenApiMapperInterface
      */
-    protected function createGetPaymentMethodsMapper(): AdyenApiMapperInterface
+    public function createGetPaymentMethodsMapper(): AdyenApiMapperInterface
     {
-        return new GetPaymentMethodsMapper(
-            $this->getConfig(),
-            $this->createGetPaymentMethodsRequestValidator()
-        );
+        return new GetPaymentMethodsMapper($this->getConfig());
     }
 
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Mapper\AdyenApiMapperInterface
      */
-    protected function createMakePaymentCreditCardMapper(): AdyenApiMapperInterface
+    public function createMakePaymentMapper(): AdyenApiMapperInterface
     {
-        return new MakePaymentCreditCardMapper(
-            $this->getConfig(),
-            $this->createMakePaymentCreditCardRequestValidator()
-        );
-    }
-
-    /**
-     * @return \SprykerEco\Zed\AdyenApi\Business\Validator\AdyenApiRequestValidatorInterface
-     */
-    protected function createGetPaymentMethodsRequestValidator(): AdyenApiRequestValidatorInterface
-    {
-        return new GetPaymentMethodsRequestValidator();
-    }
-
-    /**
-     * @return \SprykerEco\Zed\AdyenApi\Business\Validator\AdyenApiResponseValidatorInterface
-     */
-    protected function createGetPaymentMethodsResponseValidator(): AdyenApiResponseValidatorInterface
-    {
-        return new GetPaymentMethodsResponseValidator();
-    }
-
-    /**
-     * @return \SprykerEco\Zed\AdyenApi\Business\Validator\AdyenApiRequestValidatorInterface
-     */
-    protected function createMakePaymentCreditCardRequestValidator(): AdyenApiRequestValidatorInterface
-    {
-        return new MakePaymentCreditCardRequestValidator();
-    }
-
-    /**
-     * @return \SprykerEco\Zed\AdyenApi\Business\Validator\AdyenApiResponseValidatorInterface
-     */
-    protected function createMakePaymentCreditCardResponseValidator(): AdyenApiResponseValidatorInterface
-    {
-        return new MakePaymentCreditCardResponseValidator();
+        return new MakePaymentMapper($this->getConfig());
     }
 
     /**
      * @return \SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceInterface
      */
-    protected function getUtilEncodingService(): AdyenApiToUtilEncodingServiceInterface
+    public function getUtilEncodingService(): AdyenApiToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(AdyenApiDependencyProvider::SERVICE_UTIL_ENCODING);
     }

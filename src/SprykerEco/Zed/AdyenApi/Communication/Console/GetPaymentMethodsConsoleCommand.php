@@ -42,7 +42,7 @@ class GetPaymentMethodsConsoleCommand extends Console
                 ->setPaymentMethodsRequest(
                     (new AdyenApiGetPaymentMethodsRequestTransfer())
                         ->setMerchantAccount('SprykerCOM')
-                        ->setCountryCode('DE')
+                        ->setCountryCode('NL')
                         ->setAmount(
                             (new AdyenApiAmountTransfer())
                                 ->setCurrency('EUR')

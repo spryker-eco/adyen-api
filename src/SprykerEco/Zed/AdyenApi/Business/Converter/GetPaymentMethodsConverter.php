@@ -5,11 +5,9 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEco\Zed\AdyenApi\Business\Converter\GetPaymentMethods;
+namespace SprykerEco\Zed\AdyenApi\Business\Converter;
 
 use Generated\Shared\Transfer\AdyenApiResponseTransfer;
-use SprykerEco\Zed\AdyenApi\Business\Converter\AbstractConverter;
-use SprykerEco\Zed\AdyenApi\Business\Converter\AdyenApiConverterInterface;
 
 class GetPaymentMethodsConverter extends AbstractConverter implements AdyenApiConverterInterface
 {

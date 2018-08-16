@@ -10,7 +10,6 @@ namespace SprykerEco\Zed\AdyenApi\Business\Converter;
 use Generated\Shared\Transfer\AdyenApiResponseTransfer;
 use Psr\Http\Message\StreamInterface;
 use SprykerEco\Zed\AdyenApi\AdyenApiConfig;
-use SprykerEco\Zed\AdyenApi\Business\Validator\AdyenApiResponseValidatorInterface;
 use SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceInterface;
 
 abstract class AbstractConverter implements AdyenApiConverterInterface
@@ -19,11 +18,6 @@ abstract class AbstractConverter implements AdyenApiConverterInterface
      * @var \SprykerEco\Zed\AdyenApi\AdyenApiConfig
      */
     protected $config;
-
-    /**
-     * @var \SprykerEco\Zed\AdyenApi\Business\Validator\AdyenApiResponseValidatorInterface
-     */
-    protected $validator;
 
     /**
      * @var \SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceInterface
@@ -39,16 +33,13 @@ abstract class AbstractConverter implements AdyenApiConverterInterface
 
     /**
      * @param \SprykerEco\Zed\AdyenApi\AdyenApiConfig $config
-     * @param \SprykerEco\Zed\AdyenApi\Business\Validator\AdyenApiResponseValidatorInterface $validator
      * @param \SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceInterface $encodingService
      */
     public function __construct(
         AdyenApiConfig $config,
-        AdyenApiResponseValidatorInterface $validator,
         AdyenApiToUtilEncodingServiceInterface $encodingService
     ) {
         $this->config = $config;
-        $this->validator = $validator;
         $this->encodingService = $encodingService;
     }
 
@@ -59,20 +50,8 @@ abstract class AbstractConverter implements AdyenApiConverterInterface
      */
     public function convertToResponseTransfer(StreamInterface $response): AdyenApiResponseTransfer
     {
-        $decryptedResponse = $this->decryptResponse($response);
-        $responseTransfer = $this->getResponseTransfer($decryptedResponse);
-        $this->validator->validateResponse($responseTransfer);
+        $decryptedResponse = $this->encodingService->decodeJson($response, true);
 
-        return $responseTransfer;
-    }
-
-    /**
-     * @param \Psr\Http\Message\StreamInterface $response
-     *
-     * @return array
-     */
-    protected function decryptResponse(StreamInterface $response): array
-    {
-        return $this->encodingService->decodeJson($response, true);
+        return $this->getResponseTransfer($decryptedResponse);
     }
 }
