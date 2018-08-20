@@ -83,4 +83,28 @@ class AdyenApiConfig extends AbstractBundleConfig
     {
         return $this->get(AdyenApiConstants::REFUND_ACTION_URL);
     }
+
+    /**
+     * @return string
+     */
+    public function getCancelOrRefundActionUrl(): string
+    {
+        return $this->get(AdyenApiConstants::CANCEL_OR_REFUND_ACTION_URL);
+    }
+
+    /**
+     * @return string
+     */
+    public function getTechnicalCancelActionUrl(): string
+    {
+        return $this->get(AdyenApiConstants::TECHNICAL_CANCEL_ACTION_URL);
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdjustAuthorisationActionUrl(): string
+    {
+        return $this->get(AdyenApiConstants::ADJUST_AUTHORISATION_ACTION_URL);
+    }
 }

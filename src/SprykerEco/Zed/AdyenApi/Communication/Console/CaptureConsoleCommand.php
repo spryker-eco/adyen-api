@@ -8,7 +8,6 @@
 namespace SprykerEco\Zed\AdyenApi\Communication\Console;
 
 use Generated\Shared\Transfer\AdyenApiAmountTransfer;
-use Generated\Shared\Transfer\AdyenApiAuthoriseRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiCaptureRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 use Spryker\Zed\Kernel\Communication\Console\Console;

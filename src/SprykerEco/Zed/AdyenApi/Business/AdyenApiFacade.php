@@ -127,4 +127,46 @@ class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
     {
         return $this->getFactory()->createRefundRequest()->request($requestTransfer);
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performCancelOrRefundApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer
+    {
+        return $this->getFactory()->createCancelOrRefundRequest()->request($requestTransfer);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performTechnicalCancelApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer
+    {
+        return $this->getFactory()->createTechnicalCancelRequest()->request($requestTransfer);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performAdjustAuthorisationApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer
+    {
+        return $this->getFactory()->createAdjustAuthorisationRequest()->request($requestTransfer);
+    }
 }

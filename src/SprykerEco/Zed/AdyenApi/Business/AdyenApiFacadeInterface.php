@@ -107,4 +107,40 @@ interface AdyenApiFacadeInterface
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
     public function performRefundApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
+
+    /**
+     * Specification:
+     * - Make API call to Adyen to cancel or refund payment.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performCancelOrRefundApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
+
+    /**
+     * Specification:
+     * - Make API call to Adyen to technical cancel payment.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performTechnicalCancelApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
+
+    /**
+     * Specification:
+     * - Make API call to Adyen to adjust authorisation payment.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performAdjustAuthorisationApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
 }
