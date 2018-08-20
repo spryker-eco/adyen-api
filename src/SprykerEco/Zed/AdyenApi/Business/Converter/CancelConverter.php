@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * MIT License
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
@@ -20,6 +20,6 @@ class CancelConverter extends AbstractConverter implements AdyenApiConverterInte
     protected function getResponseTransfer(array $response): AdyenApiResponseTransfer
     {
         return (new AdyenApiResponseTransfer())
-            ->setCaptureResponse((new AdyenApiCancelResponseTransfer())->fromArray($response, true));
+            ->setCancelResponse((new AdyenApiCancelResponseTransfer())->fromArray($response, true));
     }
 }

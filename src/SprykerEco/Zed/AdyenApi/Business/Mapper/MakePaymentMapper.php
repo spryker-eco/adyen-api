@@ -1,13 +1,12 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * MIT License
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
 namespace SprykerEco\Zed\AdyenApi\Business\Mapper;
 
-use Generated\Shared\Transfer\AdyenApiMakePaymentRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 
 class MakePaymentMapper extends AbstractMapper implements AdyenApiMapperInterface
