@@ -14,7 +14,9 @@ interface AdyenApiFacadeInterface
 {
     /**
      * Specification:
-     * - Make API call to Adyen for receive available payment methods.
+     * - Queries the available payment methods for a transaction based on the transaction context.
+     * - Giving back a list of the available payment methods.
+     * - The response also returns which input details you need to collect from the shopper.
      *
      * @api
      *
@@ -26,7 +28,8 @@ interface AdyenApiFacadeInterface
 
     /**
      * Specification:
-     * - Make API call to Adyen to make payment.
+     * - Sends payment parameters (like amount, country, and currency) together with the input details collected from the shopper.
+     * - The response returns the result of the payment request.
      *
      * @api
      *
@@ -38,7 +41,7 @@ interface AdyenApiFacadeInterface
 
     /**
      * Specification:
-     * - Make API call to Adyen to submit details from make payment request.
+     * - Submits details for a payment created using make payment call.
      *
      * @api
      *
@@ -62,7 +65,7 @@ interface AdyenApiFacadeInterface
 
     /**
      * Specification:
-     * - Make API call to Adyen to authorise 3d payment.
+     * - Completes the payment authorisation for an authenticated 3D Secure session.
      *
      * @api
      *
@@ -74,7 +77,7 @@ interface AdyenApiFacadeInterface
 
     /**
      * Specification:
-     * - Make API call to Adyen to capture payment.
+     * - Captures the authorisation hold on a payment.
      *
      * @api
      *
@@ -86,7 +89,7 @@ interface AdyenApiFacadeInterface
 
     /**
      * Specification:
-     * - Make API call to Adyen to cancel payment.
+     * - Cancels the authorisation hold on a payment
      *
      * @api
      *
@@ -98,7 +101,7 @@ interface AdyenApiFacadeInterface
 
     /**
      * Specification:
-     * - Make API call to Adyen to refund payment.
+     * - Refunds a payment that has previously been captured.
      *
      * @api
      *
@@ -110,7 +113,7 @@ interface AdyenApiFacadeInterface
 
     /**
      * Specification:
-     * - Make API call to Adyen to cancel or refund payment.
+     * - Cancels a payment if it has not yet been captured yet, or refunds it if it has already been captured
      *
      * @api
      *
@@ -122,7 +125,7 @@ interface AdyenApiFacadeInterface
 
     /**
      * Specification:
-     * - Make API call to Adyen to technical cancel payment.
+     * - Cancels a previously authorised payment using a custom reference value.
      *
      * @api
      *
@@ -134,7 +137,7 @@ interface AdyenApiFacadeInterface
 
     /**
      * Specification:
-     * - Make API call to Adyen to adjust authorisation payment.
+     * - Allows you to increase or decrease the authorised amount after the initial authorisation has taken place.
      *
      * @api
      *
