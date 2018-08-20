@@ -223,7 +223,7 @@
     <!--- Response Transfers -->
 
     <transfer name="AdyenApiResponse">
-        <property name="paymentMethodsResponse" type="AdyenApiPaymentMethod[]" />
+        <property name="paymentMethods" type="AdyenApiPaymentMethod[]" />
         <property name="makePaymentResponse" type="AdyenApiMakePaymentResponse" />
         <property name="paymentsDetailsResponse" type="AdyenApiPaymentsDetailsResponse" />
         <property name="authoriseResponse" type="AdyenApiAuthoriseResponse" />
