@@ -26,7 +26,12 @@
     "process-timeout": 600
   },
   "scripts": {
-    "cs-check": "phpcs Bundles --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p -v"
+    "post-install-cmd": [
+      "GitHook\\Composer\\Scripts\\HookInstaller::installEcoHooks"
+    ],
+    "post-update-cmd": [
+      "GitHook\\Composer\\Scripts\\HookInstaller::installEcoHooks"
+    ]
   },
   "repositories": [
     {
