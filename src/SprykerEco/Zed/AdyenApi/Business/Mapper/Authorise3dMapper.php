@@ -7,10 +7,9 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Mapper;
 
-use Generated\Shared\Transfer\AdyenApiMakePaymentRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 
-class MakePaymentMapper extends AbstractMapper implements AdyenApiMapperInterface
+class Authorise3dMapper extends AbstractMapper implements AdyenApiMapperInterface
 {
     /**
      * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $adyenApiRequestTransfer
@@ -21,7 +20,7 @@ class MakePaymentMapper extends AbstractMapper implements AdyenApiMapperInterfac
     {
         $this->validateRequestTransfer($adyenApiRequestTransfer);
 
-        $requestDataArray = $adyenApiRequestTransfer->getMakePaymentRequest()->toArray(true, true);
+        $requestDataArray = $adyenApiRequestTransfer->requireAuthorise3dRequest()->toArray(true, true);
 
         return $this->removeRedundantParams($requestDataArray);
     }
@@ -33,18 +32,18 @@ class MakePaymentMapper extends AbstractMapper implements AdyenApiMapperInterfac
      */
     protected function validateRequestTransfer(AdyenApiRequestTransfer $adyenApiRequestTransfer): void
     {
-        $adyenApiRequestTransfer->requireMakePaymentRequest();
+        $adyenApiRequestTransfer->requireAuthorise3dRequest();
 
         $adyenApiRequestTransfer
-            ->getMakePaymentRequest()
-            ->requireMerchantAccount()
-            ->requireReference()
+            ->getAuthorise3dRequest()
             ->requireAmount()
-            ->requirePaymentMethod()
-            ->requireReturnUrl();
+            ->requireMd()
+            ->requireMerchantAccount()
+            ->requirePaResponse()
+            ->requireReference();
 
         $adyenApiRequestTransfer
-            ->getMakePaymentRequest()
+            ->getAuthorise3dRequest()
             ->getAmount()
             ->requireCurrency()
             ->requireValue();

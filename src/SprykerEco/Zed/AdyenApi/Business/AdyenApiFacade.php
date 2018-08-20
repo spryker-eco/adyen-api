@@ -43,4 +43,46 @@ class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
     {
         return $this->getFactory()->createMakePaymentRequest()->request($requestTransfer);
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performPaymentsDetailsApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer
+    {
+        return $this->getFactory()->createPaymentsDetailsRequest()->request($requestTransfer);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performAuthoriseApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer
+    {
+        return $this->getFactory()->createAuthoriseRequest()->request($requestTransfer);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performAuthorise3dApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer
+    {
+        return $this->getFactory()->createAuthorise3dRequest()->request($requestTransfer);
+    }
 }

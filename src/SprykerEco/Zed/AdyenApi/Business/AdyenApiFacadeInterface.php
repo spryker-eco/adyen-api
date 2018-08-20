@@ -35,4 +35,40 @@ interface AdyenApiFacadeInterface
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
     public function performMakePaymentApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
+
+    /**
+     * Specification:
+     * - Make API call to Adyen to submit details from make payment request.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performPaymentsDetailsApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
+
+    /**
+     * Specification:
+     * - Make API call to Adyen to authorise payment.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performAuthoriseApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
+
+    /**
+     * Specification:
+     * - Make API call to Adyen to authorise 3d payment.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performAuthorise3dApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
 }

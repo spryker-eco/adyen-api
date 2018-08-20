@@ -7,10 +7,10 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Converter;
 
-use Generated\Shared\Transfer\AdyenApiMakePaymentResponseTransfer;
+use Generated\Shared\Transfer\AdyenApiPaymentsDetailsResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiResponseTransfer;
 
-class MakePaymentConverter extends AbstractConverter implements AdyenApiConverterInterface
+class PaymentsDetailsConverter extends AbstractConverter implements AdyenApiConverterInterface
 {
     /**
      * @param array $response
@@ -20,6 +20,6 @@ class MakePaymentConverter extends AbstractConverter implements AdyenApiConverte
     protected function getResponseTransfer(array $response): AdyenApiResponseTransfer
     {
         return (new AdyenApiResponseTransfer())
-            ->setMakePaymentResponse((new AdyenApiMakePaymentResponseTransfer())->fromArray($response, true));
+            ->setPaymentsDetailsResponse((new AdyenApiPaymentsDetailsResponseTransfer())->fromArray($response, true));
     }
 }

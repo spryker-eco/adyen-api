@@ -8,6 +8,9 @@
     <transfer name="AdyenApiRequest">
         <property name="paymentMethodsRequest" type="AdyenApiGetPaymentMethodsRequest" />
         <property name="makePaymentRequest" type="AdyenApiMakePaymentRequest" />
+        <property name="paymentsDetailsRequest" type="AdyenApiPaymentsDetailsRequest" />
+        <property name="authoriseRequest" type="AdyenApiAuthoriseRequest" />
+        <property name="authorise3dRequest" type="AdyenApiAuthorise3dRequest" />
     </transfer>
 
     <transfer name="AdyenApiGetPaymentMethodsRequest">
@@ -69,12 +72,126 @@
         <property name="type" type="string" />
     </transfer>
 
+    <transfer name="AdyenApiPaymentsDetailsRequest">
+        <property name="paymentData" type="string" />
+        <property name="details" type="array" />
+    </transfer>
+
+    <transfer name="AdyenApiAuthoriseRequest">
+        <property name="additionalAmount" type="AdyenApiAmount" />
+        <property name="additionalData" type="array" />
+        <property name="amount" type="AdyenApiAmount" />
+        <property name="bankAccount" type="AdyenApiBankAccount" />
+        <property name="billingAddress" type="AdyenApiAddress" />
+        <property name="browserInfo" type="AdyenApiBrowserInfo" />
+        <property name="captureDelayHours" type="int" />
+        <property name="card" type="AdyenApiCard" />
+        <property name="dateOfBirth" type="string" />
+        <property name="deliveryAddress" type="AdyenApiAddress" />
+        <property name="deliveryDate" type="string" />
+        <property name="deviceFingerprint" type="string" />
+        <property name="entityType" type="string" />
+        <property name="fraudOffset" type="int" />
+        <property name="installments" type="AdyenApiInstallments" />
+        <property name="mcc" type="string" />
+        <property name="merchantAccount" type="string" />
+        <property name="merchantOrderReference" type="string" />
+        <property name="metadata" type="array" />
+        <property name="mpiData" type="array" />
+        <property name="nationality" type="string" />
+        <property name="orderReference" type="string" />
+        <property name="reference" type="string" />
+        <property name="selectedBrand" type="string" />
+        <property name="sessionId" type="string" />
+        <property name="shopperEmail" type="string" />
+        <property name="shopperIP" type="string" />
+        <property name="shopperLocale" type="string" />
+        <property name="shopperReference" type="string" />
+        <property name="shopperStatement" type="string" />
+        <property name="socialSecurityNumber" type="string" />
+        <property name="store" type="string" />
+        <property name="telephoneNumber" type="string" />
+        <property name="totalsGroup" type="string" />
+        <property name="shopperName" type="array" />
+    </transfer>
+
+    <transfer name="AdyenApiAuthorise3dRequest">
+        <property name="additionalAmount" type="AdyenApiAmount" />
+        <property name="additionalData" type="array" />
+        <property name="amount" type="AdyenApiAmount" />
+        <property name="billingAddress" type="AdyenApiAddress" />
+        <property name="browserInfo" type="AdyenApiBrowserInfo" />
+        <property name="captureDelayHours" type="int" />
+        <property name="dateOfBirth" type="string" />
+        <property name="deliveryAddress" type="AdyenApiAddress" />
+        <property name="deliveryDate" type="string" />
+        <property name="deviceFingerprint" type="string" />
+        <property name="fraudOffset" type="int" />
+        <property name="installments" type="AdyenApiInstallments" />
+        <property name="mcc" type="string" />
+        <property name="md" type="string" />
+        <property name="merchantAccount" type="string" />
+        <property name="merchantOrderReference" type="string" />
+        <property name="metadata" type="array" />
+        <property name="orderReference" type="string" />
+        <property name="paResponse" type="string" />
+        <property name="reference" type="string" />
+        <property name="selectedBrand" type="string" />
+        <property name="sessionId" type="string" />
+        <property name="shopperEmail" type="string" />
+        <property name="shopperIP" type="string" />
+        <property name="shopperInteraction" type="string" />
+        <property name="shopperLocale" type="string" />
+        <property name="shopperReference" type="string" />
+        <property name="shopperStatement" type="string" />
+        <property name="socialSecurityNumber" type="string" />
+        <property name="store" type="string" />
+        <property name="telephoneNumber" type="string" />
+        <property name="totalsGroup" type="string" />
+        <property name="shopperName" type="array" />
+    </transfer>
+
+    <transfer name="AdyenApiBankAccount">
+        <property name="bankAccountNumber" type="string" />
+        <property name="bankCity" type="string" />
+        <property name="bankLocationId" type="string" />
+        <property name="bankName" type="string" />
+        <property name="bic" type="string" />
+        <property name="countryCode" type="string" />
+        <property name="iban" type="string" />
+        <property name="ownerName" type="string" />
+        <property name="taxId" type="string" />
+    </transfer>
+
+    <transfer name="AdyenApiBrowserInfo">
+        <property name="acceptHeader" type="string" />
+        <property name="userAgent" type="string" />
+    </transfer>
+
+    <transfer name="AdyenApiCard">
+        <property name="cvc" type="string" />
+        <property name="expiryMonth" type="string" />
+        <property name="expiryYear" type="string" />
+        <property name="holderName" type="string" />
+        <property name="issueNumber" type="string" />
+        <property name="number" type="string" />
+        <property name="startMonth" type="string" />
+        <property name="startYear" type="string" />
+    </transfer>
+
+    <transfer name="AdyenApiInstallments">
+        <property name="value" type="int" />
+    </transfer>
+
 
     <!--- Response Transfers -->
 
     <transfer name="AdyenApiResponse">
-        <property name="paymentMethods" type="AdyenApiPaymentMethod[]" />
-        <property name="makePayment" type="AdyenApiMakePaymentResponse" />
+        <property name="paymentMethodsResponse" type="AdyenApiPaymentMethod[]" />
+        <property name="makePaymentResponse" type="AdyenApiMakePaymentResponse" />
+        <property name="paymentsDetailsResponse" type="AdyenApiPaymentsDetailsResponse" />
+        <property name="authoriseResponse" type="AdyenApiAuthoriseResponse" />
+        <property name="authorise3dResponse" type="AdyenApiAuthorise3dResponse" />
     </transfer>
 
     <transfer name="AdyenApiPaymentMethod">
@@ -98,6 +215,45 @@
         <property name="data" type="array" />
         <property name="method" type="string" />
         <property name="url" type="string" />
+    </transfer>
+
+    <transfer name="AdyenApiPaymentsDetailsResponse">
+        <property name="pspReference" type="string" />
+        <property name="resultCode" type="string" />
+        <property name="refusalReason" type="string" />
+        <property name="additionalData" type="array" />
+        <property name="details" type="array" />
+        <property name="paymentData" type="string" />
+        <property name="fraudResult" type="array" />
+        <property name="redirect" type="AdyenApiMakePaymentResponseRedirect" />
+    </transfer>
+
+    <transfer name="AdyenApiAuthoriseResponse">
+        <property name="additionalData" type="array" />
+        <property name="authCode" type="string" />
+        <property name="dccAmount" type="AdyenApiAmount" />
+        <property name="dccSignature" type="string" />
+        <property name="fraudResult" type="array" />
+        <property name="issuerUrl" type="string" />
+        <property name="md" type="string" />
+        <property name="paRequest" type="string" />
+        <property name="pspReference" type="string" />
+        <property name="refusalReason" type="string" />
+        <property name="resultCode" type="string" />
+    </transfer>
+
+    <transfer name="AdyenApiAuthorise3dResponse">
+        <property name="additionalData" type="array" />
+        <property name="authCode" type="string" />
+        <property name="dccAmount" type="AdyenApiAmount" />
+        <property name="dccSignature" type="string" />
+        <property name="fraudResult" type="array" />
+        <property name="issuerUrl" type="string" />
+        <property name="md" type="string" />
+        <property name="paRequest" type="string" />
+        <property name="pspReference" type="string" />
+        <property name="refusalReason" type="string" />
+        <property name="resultCode" type="string" />
     </transfer>
 
 </transfers>
