@@ -85,4 +85,18 @@ class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
     {
         return $this->getFactory()->createAuthorise3dRequest()->request($requestTransfer);
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performCaptureApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer
+    {
+        return $this->getFactory()->createCaptureRequest()->request($requestTransfer);
+    }
 }

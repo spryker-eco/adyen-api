@@ -59,4 +59,12 @@ class AdyenApiConfig extends AbstractBundleConfig
     {
         return $this->get(AdyenApiConstants::AUTHORISE_3D_ACTION_URL);
     }
+
+    /**
+     * @return string
+     */
+    public function getCaptureActionUrl(): string
+    {
+        return $this->get(AdyenApiConstants::CAPTURE_ACTION_URL);
+    }
 }

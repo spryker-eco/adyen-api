@@ -12,18 +12,21 @@ use SprykerEco\Zed\AdyenApi\AdyenApiDependencyProvider;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\AdyenApiAdapterInterface;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\Authorise3dAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\AuthoriseAdapter;
+use SprykerEco\Zed\AdyenApi\Business\Adapter\CaptureAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\GetPaymentMethodsAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\MakePaymentAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\PaymentsDetailsAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\AdyenApiConverterInterface;
 use SprykerEco\Zed\AdyenApi\Business\Converter\Authorise3dConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\AuthoriseConverter;
+use SprykerEco\Zed\AdyenApi\Business\Converter\CaptureConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\GetPaymentMethodsConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\MakePaymentConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\PaymentsDetailsConverter;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\AdyenApiMapperInterface;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\Authorise3dMapper;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\AuthoriseMapper;
+use SprykerEco\Zed\AdyenApi\Business\Mapper\CaptureMapper;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\GetPaymentMethodsMapper;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\MakePaymentMapper;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\PaymentsDetailsMapper;
@@ -102,6 +105,19 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
+     * @return \SprykerEco\Zed\AdyenApi\Business\Request\AdyenApiRequestInterface
+     */
+    public function createCaptureRequest(): AdyenApiRequestInterface
+    {
+        return new AdyenApiRequest(
+            $this->createCaptureAdapter(),
+            $this->createCaptureConverter(),
+            $this->createCaptureMapper(),
+            $this->getConfig()
+        );
+    }
+
+    /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Adapter\AdyenApiAdapterInterface
      */
     public function createGetPaymentMethodsAdapter(): AdyenApiAdapterInterface
@@ -151,6 +167,17 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     public function createAuthorise3dAdapter(): AdyenApiAdapterInterface
     {
         return new Authorise3dAdapter(
+            $this->getConfig(),
+            $this->getUtilEncodingService()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\AdyenApi\Business\Adapter\AdyenApiAdapterInterface
+     */
+    public function createCaptureAdapter(): AdyenApiAdapterInterface
+    {
+        return new CaptureAdapter(
             $this->getConfig(),
             $this->getUtilEncodingService()
         );
@@ -212,6 +239,17 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
+     * @return \SprykerEco\Zed\AdyenApi\Business\Converter\AdyenApiConverterInterface
+     */
+    public function createCaptureConverter(): AdyenApiConverterInterface
+    {
+        return new CaptureConverter(
+            $this->getConfig(),
+            $this->getUtilEncodingService()
+        );
+    }
+
+    /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Mapper\AdyenApiMapperInterface
      */
     public function createGetPaymentMethodsMapper(): AdyenApiMapperInterface
@@ -249,6 +287,14 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     public function createAuthorise3dMapper(): AdyenApiMapperInterface
     {
         return new Authorise3dMapper($this->getConfig());
+    }
+
+    /**
+     * @return \SprykerEco\Zed\AdyenApi\Business\Mapper\AdyenApiMapperInterface
+     */
+    public function createCaptureMapper(): AdyenApiMapperInterface
+    {
+        return new CaptureMapper($this->getConfig());
     }
 
     /**
