@@ -83,4 +83,16 @@ interface AdyenApiFacadeInterface
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
     public function performCaptureApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
+
+    /**
+     * Specification:
+     * - Make API call to Adyen to cancel payment.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    public function performCancelApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
 }

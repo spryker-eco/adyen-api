@@ -12,6 +12,7 @@
         <property name="authoriseRequest" type="AdyenApiAuthoriseRequest" />
         <property name="authorise3dRequest" type="AdyenApiAuthorise3dRequest" />
         <property name="captureRequest" type="AdyenApiCaptureRequest" />
+        <property name="cancelRequest" type="AdyenApiCancelRequest" />
     </transfer>
 
     <transfer name="AdyenApiGetPaymentMethodsRequest">
@@ -195,6 +196,17 @@
         <property name="uniqueTerminalId" type="string" />
     </transfer>
 
+    <transfer name="AdyenApiCancelRequest">
+        <property name="additionalData" type="array" />
+        <property name="merchantAccount" type="string" />
+        <property name="modificationAmount" type="AdyenApiAmount" />
+        <property name="originalMerchantReference" type="string" />
+        <property name="originalReference" type="string" />
+        <property name="reference" type="string" />
+        <property name="tenderReference" type="string" />
+        <property name="uniqueTerminalId" type="string" />
+    </transfer>
+
 
     <!--- Response Transfers -->
 
@@ -205,6 +217,7 @@
         <property name="authoriseResponse" type="AdyenApiAuthoriseResponse" />
         <property name="authorise3dResponse" type="AdyenApiAuthorise3dResponse" />
         <property name="captureResponse" type="AdyenApiCaptureResponse" />
+        <property name="cancelResponse" type="AdyenApiCancelResponse" />
     </transfer>
 
     <transfer name="AdyenApiPaymentMethod">
@@ -270,6 +283,12 @@
     </transfer>
 
     <transfer name="AdyenApiCaptureResponse">
+        <property name="additionalData" type="array" />
+        <property name="pspReference" type="string" />
+        <property name="response" type="string" />
+    </transfer>
+
+    <transfer name="AdyenApiCancelResponse">
         <property name="additionalData" type="array" />
         <property name="pspReference" type="string" />
         <property name="response" type="string" />
