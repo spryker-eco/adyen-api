@@ -25,14 +25,6 @@
     "sort-packages": true,
     "process-timeout": 600
   },
-  "scripts": {
-    "post-install-cmd": [
-      "GitHook\\Composer\\Scripts\\HookInstaller::installEcoHooks"
-    ],
-    "post-update-cmd": [
-      "GitHook\\Composer\\Scripts\\HookInstaller::installEcoHooks"
-    ]
-  },
   "repositories": [
     {
       "type": "composer",
