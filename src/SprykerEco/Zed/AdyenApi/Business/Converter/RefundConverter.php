@@ -13,13 +13,15 @@ use Generated\Shared\Transfer\AdyenApiResponseTransfer;
 class RefundConverter extends AbstractConverter implements AdyenApiConverterInterface
 {
     /**
+     * @param \Generated\Shared\Transfer\AdyenApiResponseTransfer $responseTransfer
      * @param array $response
      *
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    protected function getResponseTransfer(array $response): AdyenApiResponseTransfer
+    protected function updateResponseTransfer(AdyenApiResponseTransfer $responseTransfer, array $response): AdyenApiResponseTransfer
     {
-        return (new AdyenApiResponseTransfer())
-            ->setRefundResponse((new AdyenApiRefundResponseTransfer())->fromArray($response, true));
+        $apiResponseTransfer = (new AdyenApiRefundResponseTransfer())->fromArray($response, true);
+
+        return $responseTransfer->setRefundResponse($apiResponseTransfer);
     }
 }

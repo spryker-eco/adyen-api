@@ -12,12 +12,13 @@ use Generated\Shared\Transfer\AdyenApiResponseTransfer;
 class GetPaymentMethodsConverter extends AbstractConverter implements AdyenApiConverterInterface
 {
     /**
+     * @param \Generated\Shared\Transfer\AdyenApiResponseTransfer $responseTransfer
      * @param array $response
      *
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    protected function getResponseTransfer(array $response): AdyenApiResponseTransfer
+    protected function updateResponseTransfer(AdyenApiResponseTransfer $responseTransfer, array $response): AdyenApiResponseTransfer
     {
-        return (new AdyenApiResponseTransfer())->fromArray($response, true);
+        return $responseTransfer->fromArray($response, true);
     }
 }

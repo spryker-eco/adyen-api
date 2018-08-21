@@ -8,14 +8,15 @@
 namespace SprykerEco\Zed\AdyenApi\Business\Converter;
 
 use Generated\Shared\Transfer\AdyenApiResponseTransfer;
-use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\ResponseInterface;
 
 interface AdyenApiConverterInterface
 {
     /**
-     * @param \Psr\Http\Message\StreamInterface $response
+     * @param \Psr\Http\Message\ResponseInterface $response
+     * @param bool $isSuccess
      *
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    public function convertToResponseTransfer(StreamInterface $response): AdyenApiResponseTransfer;
+    public function convertToResponseTransfer(ResponseInterface $response, $isSuccess = true): AdyenApiResponseTransfer;
 }

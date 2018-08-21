@@ -9,6 +9,7 @@ namespace SprykerEco\Zed\AdyenApi\Business\Request;
 
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiResponseTransfer;
+use GuzzleHttp\Exception\RequestException;
 use SprykerEco\Zed\AdyenApi\AdyenApiConfig;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\AdyenApiAdapterInterface;
 use SprykerEco\Zed\AdyenApi\Business\Converter\AdyenApiConverterInterface;
@@ -67,8 +68,15 @@ class AdyenApiRequest implements AdyenApiRequestInterface
     public function request(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer
     {
         $requestData = $this->mapper->buildRequest($requestTransfer);
-        $response = $this->adapter->sendRequest($requestData);
+        $isSuccess = true;
 
-        return $this->converter->convertToResponseTransfer($response);
+        try {
+            $response = $this->adapter->sendRequest($requestData);
+        } catch (RequestException $requestException) {
+            $response = $requestException->getResponse();
+            $isSuccess = false;
+        }
+
+        return $this->converter->convertToResponseTransfer($response, $isSuccess);
     }
 }

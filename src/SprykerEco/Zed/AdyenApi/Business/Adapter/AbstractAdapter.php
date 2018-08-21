@@ -8,11 +8,9 @@
 namespace SprykerEco\Zed\AdyenApi\Business\Adapter;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\RequestOptions;
-use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\ResponseInterface;
 use SprykerEco\Zed\AdyenApi\AdyenApiConfig;
-use SprykerEco\Zed\AdyenApi\Business\Exception\AdyenApiHttpRequestException;
 use SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceInterface;
 
 abstract class AbstractAdapter implements AdyenApiAdapterInterface
@@ -65,9 +63,9 @@ abstract class AbstractAdapter implements AdyenApiAdapterInterface
     /**
      * @param array $data
      *
-     * @return \Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\ResponseInterface
      */
-    public function sendRequest(array $data): StreamInterface
+    public function sendRequest(array $data): ResponseInterface
     {
         $options[RequestOptions::BODY] = $this->encodingService->encodeJson($data);
 
@@ -77,25 +75,13 @@ abstract class AbstractAdapter implements AdyenApiAdapterInterface
     /**
      * @param array $options
      *
-     * @throws \SprykerEco\Zed\AdyenApi\Business\Exception\AdyenApiHttpRequestException
-     *
-     * @return \Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\ResponseInterface
      */
-    protected function send(array $options = []): StreamInterface
+    protected function send(array $options = []): ResponseInterface
     {
-        try {
-            $response = $this->client->post(
-                $this->getUrl(),
-                $options
-            );
-        } catch (RequestException $requestException) {
-            throw new AdyenApiHttpRequestException(
-                $requestException->getMessage(),
-                $requestException->getCode(),
-                $requestException
-            );
-        }
-
-        return $response->getBody();
+        return $this->client->post(
+            $this->getUrl(),
+            $options
+        );
     }
 }

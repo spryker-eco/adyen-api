@@ -7,14 +7,14 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Adapter;
 
-use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\ResponseInterface;
 
 interface AdyenApiAdapterInterface
 {
     /**
      * @param array $data
      *
-     * @return \Psr\Http\Message\StreamInterface
+     * @return \Psr\Http\Message\ResponseInterface
      */
-    public function sendRequest(array $data): StreamInterface;
+    public function sendRequest(array $data): ResponseInterface;
 }

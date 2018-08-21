@@ -7,8 +7,9 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Converter;
 
+use Generated\Shared\Transfer\AdyenApiErrorResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiResponseTransfer;
-use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\ResponseInterface;
 use SprykerEco\Zed\AdyenApi\AdyenApiConfig;
 use SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceInterface;
 
@@ -25,11 +26,12 @@ abstract class AbstractConverter implements AdyenApiConverterInterface
     protected $encodingService;
 
     /**
+     * @param \Generated\Shared\Transfer\AdyenApiResponseTransfer $responseTransfer
      * @param array $response
      *
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    abstract protected function getResponseTransfer(array $response): AdyenApiResponseTransfer;
+    abstract protected function updateResponseTransfer(AdyenApiResponseTransfer $responseTransfer, array $response): AdyenApiResponseTransfer;
 
     /**
      * @param \SprykerEco\Zed\AdyenApi\AdyenApiConfig $config
@@ -44,14 +46,39 @@ abstract class AbstractConverter implements AdyenApiConverterInterface
     }
 
     /**
-     * @param \Psr\Http\Message\StreamInterface $response
+     * @param \Psr\Http\Message\ResponseInterface $response
+     * @param bool $isSuccess
      *
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    public function convertToResponseTransfer(StreamInterface $response): AdyenApiResponseTransfer
+    public function convertToResponseTransfer(ResponseInterface $response, $isSuccess = true): AdyenApiResponseTransfer
     {
-        $decryptedResponse = $this->encodingService->decodeJson($response, true);
+        $responseBody = $this->encodingService->decodeJson($response->getBody(), true);
+        $responseTransfer = $this->createResponseTransfer();
+        $responseTransfer->setIsSuccess($isSuccess);
 
-        return $this->getResponseTransfer($decryptedResponse);
+        if ($isSuccess) {
+            return $this->updateResponseTransfer($responseTransfer, $responseBody);
+        }
+
+        return $responseTransfer->setError($this->createErrorResponseTransfer($responseBody));
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
+     */
+    protected function createResponseTransfer()
+    {
+        return new AdyenApiResponseTransfer();
+    }
+
+    /**
+     * @param array $responseBody
+     *
+     * @return \Generated\Shared\Transfer\AdyenApiErrorResponseTransfer
+     */
+    protected function createErrorResponseTransfer(array $responseBody)
+    {
+        return (new AdyenApiErrorResponseTransfer())->fromArray($responseBody, true);
     }
 }

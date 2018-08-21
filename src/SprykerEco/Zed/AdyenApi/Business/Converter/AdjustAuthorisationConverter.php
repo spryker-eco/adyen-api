@@ -13,13 +13,15 @@ use Generated\Shared\Transfer\AdyenApiResponseTransfer;
 class AdjustAuthorisationConverter extends AbstractConverter implements AdyenApiConverterInterface
 {
     /**
+     * @param \Generated\Shared\Transfer\AdyenApiResponseTransfer $responseTransfer
      * @param array $response
      *
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    protected function getResponseTransfer(array $response): AdyenApiResponseTransfer
+    protected function updateResponseTransfer(AdyenApiResponseTransfer $responseTransfer, array $response): AdyenApiResponseTransfer
     {
-        return (new AdyenApiResponseTransfer())
-            ->setAdjustAuthorisationResponse((new AdyenApiAdjustAuthorisationResponseTransfer())->fromArray($response, true));
+        $apiResponseTransfer = (new AdyenApiAdjustAuthorisationResponseTransfer())->fromArray($response, true);
+
+        return $responseTransfer->setAdjustAuthorisationResponse($apiResponseTransfer);
     }
 }
