@@ -7,10 +7,10 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Converter;
 
-use Generated\Shared\Transfer\AdyenApiAdjustAuthorisationResponseTransfer;
+use Generated\Shared\Transfer\AdyenApiAuthorizeResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiResponseTransfer;
 
-class AdjustAuthorisationConverter extends AbstractConverter implements AdyenApiConverterInterface
+class AuthorizeConverter extends AbstractConverter implements AdyenApiConverterInterface
 {
     /**
      * @param \Generated\Shared\Transfer\AdyenApiResponseTransfer $responseTransfer
@@ -20,8 +20,8 @@ class AdjustAuthorisationConverter extends AbstractConverter implements AdyenApi
      */
     protected function updateResponseTransfer(AdyenApiResponseTransfer $responseTransfer, array $response): AdyenApiResponseTransfer
     {
-        $apiResponseTransfer = (new AdyenApiAdjustAuthorisationResponseTransfer())->fromArray($response, true);
+        $apiResponseTransfer = (new AdyenApiAuthorizeResponseTransfer())->fromArray($response, true);
 
-        return $responseTransfer->setAdjustAuthorisationResponse($apiResponseTransfer);
+        return $responseTransfer->setAuthorizeResponse($apiResponseTransfer);
     }
 }

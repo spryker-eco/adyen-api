@@ -47,17 +47,17 @@ class AdyenApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getAuthoriseActionUrl(): string
+    public function getAuthorizeActionUrl(): string
     {
-        return $this->get(AdyenApiConstants::AUTHORISE_ACTION_URL);
+        return $this->get(AdyenApiConstants::AUTHORIZE_ACTION_URL);
     }
 
     /**
      * @return string
      */
-    public function getAuthorise3dActionUrl(): string
+    public function getAuthorize3dActionUrl(): string
     {
-        return $this->get(AdyenApiConstants::AUTHORISE_3D_ACTION_URL);
+        return $this->get(AdyenApiConstants::AUTHORIZE_3D_ACTION_URL);
     }
 
     /**
@@ -103,8 +103,8 @@ class AdyenApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getAdjustAuthorisationActionUrl(): string
+    public function getAdjustAuthorizationActionUrl(): string
     {
-        return $this->get(AdyenApiConstants::ADJUST_AUTHORISATION_ACTION_URL);
+        return $this->get(AdyenApiConstants::ADJUST_AUTHORIZATION_ACTION_URL);
     }
 }

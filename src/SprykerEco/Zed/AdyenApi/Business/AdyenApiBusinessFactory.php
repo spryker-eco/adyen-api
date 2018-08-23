@@ -9,10 +9,10 @@ namespace SprykerEco\Zed\AdyenApi\Business;
 
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 use SprykerEco\Zed\AdyenApi\AdyenApiDependencyProvider;
-use SprykerEco\Zed\AdyenApi\Business\Adapter\AdjustAuthorisationAdapter;
+use SprykerEco\Zed\AdyenApi\Business\Adapter\AdjustAuthorizationAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\AdyenApiAdapterInterface;
-use SprykerEco\Zed\AdyenApi\Business\Adapter\Authorise3dAdapter;
-use SprykerEco\Zed\AdyenApi\Business\Adapter\AuthoriseAdapter;
+use SprykerEco\Zed\AdyenApi\Business\Adapter\Authorize3dAdapter;
+use SprykerEco\Zed\AdyenApi\Business\Adapter\AuthorizeAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\CancelAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\CancelOrRefundAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\CaptureAdapter;
@@ -21,10 +21,10 @@ use SprykerEco\Zed\AdyenApi\Business\Adapter\MakePaymentAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\PaymentsDetailsAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\RefundAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\TechnicalCancelAdapter;
-use SprykerEco\Zed\AdyenApi\Business\Converter\AdjustAuthorisationConverter;
+use SprykerEco\Zed\AdyenApi\Business\Converter\AdjustAuthorizationConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\AdyenApiConverterInterface;
-use SprykerEco\Zed\AdyenApi\Business\Converter\Authorise3dConverter;
-use SprykerEco\Zed\AdyenApi\Business\Converter\AuthoriseConverter;
+use SprykerEco\Zed\AdyenApi\Business\Converter\Authorize3dConverter;
+use SprykerEco\Zed\AdyenApi\Business\Converter\AuthorizeConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\CancelConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\CancelOrRefundConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\CaptureConverter;
@@ -33,10 +33,10 @@ use SprykerEco\Zed\AdyenApi\Business\Converter\MakePaymentConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\PaymentsDetailsConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\RefundConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\TechnicalCancelConverter;
-use SprykerEco\Zed\AdyenApi\Business\Mapper\AdjustAuthorisationMapper;
+use SprykerEco\Zed\AdyenApi\Business\Mapper\AdjustAuthorizationMapper;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\AdyenApiMapperInterface;
-use SprykerEco\Zed\AdyenApi\Business\Mapper\Authorise3dMapper;
-use SprykerEco\Zed\AdyenApi\Business\Mapper\AuthoriseMapper;
+use SprykerEco\Zed\AdyenApi\Business\Mapper\Authorize3dMapper;
+use SprykerEco\Zed\AdyenApi\Business\Mapper\AuthorizeMapper;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\CancelMapper;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\CancelOrRefundMapper;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\CaptureMapper;
@@ -96,12 +96,12 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Request\AdyenApiRequestInterface
      */
-    public function createAuthoriseRequest(): AdyenApiRequestInterface
+    public function createAuthorizeRequest(): AdyenApiRequestInterface
     {
         return new AdyenApiRequest(
-            $this->createAuthoriseAdapter(),
-            $this->createAuthoriseConverter(),
-            $this->createAuthoriseMapper(),
+            $this->createAuthorizeAdapter(),
+            $this->createAuthorizeConverter(),
+            $this->createAuthorizeMapper(),
             $this->getConfig()
         );
     }
@@ -109,12 +109,12 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Request\AdyenApiRequestInterface
      */
-    public function createAuthorise3dRequest(): AdyenApiRequestInterface
+    public function createAuthorize3dRequest(): AdyenApiRequestInterface
     {
         return new AdyenApiRequest(
-            $this->createAuthorise3dAdapter(),
-            $this->createAuthorise3dConverter(),
-            $this->createAuthorise3dMapper(),
+            $this->createAuthorize3dAdapter(),
+            $this->createAuthorize3dConverter(),
+            $this->createAuthorize3dMapper(),
             $this->getConfig()
         );
     }
@@ -164,9 +164,9 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     public function createCancelOrRefundRequest(): AdyenApiRequestInterface
     {
         return new AdyenApiRequest(
-            $this->createRefundAdapter(),
-            $this->createRefundConverter(),
-            $this->createRefundMapper(),
+            $this->createCancelOrRefundAdapter(),
+            $this->createCancelOrRefundConverter(),
+            $this->createCancelOrRefundMapper(),
             $this->getConfig()
         );
     }
@@ -177,9 +177,9 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     public function createTechnicalCancelRequest(): AdyenApiRequestInterface
     {
         return new AdyenApiRequest(
-            $this->createRefundAdapter(),
-            $this->createRefundConverter(),
-            $this->createRefundMapper(),
+            $this->createTechnicalCancelAdapter(),
+            $this->createTechnicalCancelConverter(),
+            $this->createTechnicalCancelMapper(),
             $this->getConfig()
         );
     }
@@ -187,12 +187,12 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Request\AdyenApiRequestInterface
      */
-    public function createAdjustAuthorisationRequest(): AdyenApiRequestInterface
+    public function createAdjustAuthorizationRequest(): AdyenApiRequestInterface
     {
         return new AdyenApiRequest(
-            $this->createRefundAdapter(),
-            $this->createRefundConverter(),
-            $this->createRefundMapper(),
+            $this->createAdjustAuthorizationAdapter(),
+            $this->createAdjustAuthorizationConverter(),
+            $this->createAdjustAuthorizationMapper(),
             $this->getConfig()
         );
     }
@@ -233,9 +233,9 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Adapter\AdyenApiAdapterInterface
      */
-    public function createAuthoriseAdapter(): AdyenApiAdapterInterface
+    public function createAuthorizeAdapter(): AdyenApiAdapterInterface
     {
-        return new AuthoriseAdapter(
+        return new AuthorizeAdapter(
             $this->getConfig(),
             $this->getUtilEncodingService()
         );
@@ -244,9 +244,9 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Adapter\AdyenApiAdapterInterface
      */
-    public function createAuthorise3dAdapter(): AdyenApiAdapterInterface
+    public function createAuthorize3dAdapter(): AdyenApiAdapterInterface
     {
-        return new Authorise3dAdapter(
+        return new Authorize3dAdapter(
             $this->getConfig(),
             $this->getUtilEncodingService()
         );
@@ -310,9 +310,9 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Adapter\AdyenApiAdapterInterface
      */
-    public function createAdjustAuthorisationAdapter(): AdyenApiAdapterInterface
+    public function createAdjustAuthorizationAdapter(): AdyenApiAdapterInterface
     {
-        return new AdjustAuthorisationAdapter(
+        return new AdjustAuthorizationAdapter(
             $this->getConfig(),
             $this->getUtilEncodingService()
         );
@@ -354,9 +354,9 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Converter\AdyenApiConverterInterface
      */
-    public function createAuthoriseConverter(): AdyenApiConverterInterface
+    public function createAuthorizeConverter(): AdyenApiConverterInterface
     {
-        return new AuthoriseConverter(
+        return new AuthorizeConverter(
             $this->getConfig(),
             $this->getUtilEncodingService()
         );
@@ -365,9 +365,9 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Converter\AdyenApiConverterInterface
      */
-    public function createAuthorise3dConverter(): AdyenApiConverterInterface
+    public function createAuthorize3dConverter(): AdyenApiConverterInterface
     {
-        return new Authorise3dConverter(
+        return new Authorize3dConverter(
             $this->getConfig(),
             $this->getUtilEncodingService()
         );
@@ -431,9 +431,9 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Converter\AdyenApiConverterInterface
      */
-    public function createAdjustAuthorisationConverter(): AdyenApiConverterInterface
+    public function createAdjustAuthorizationConverter(): AdyenApiConverterInterface
     {
-        return new AdjustAuthorisationConverter(
+        return new AdjustAuthorizationConverter(
             $this->getConfig(),
             $this->getUtilEncodingService()
         );
@@ -466,17 +466,17 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Mapper\AdyenApiMapperInterface
      */
-    public function createAuthoriseMapper(): AdyenApiMapperInterface
+    public function createAuthorizeMapper(): AdyenApiMapperInterface
     {
-        return new AuthoriseMapper($this->getConfig());
+        return new AuthorizeMapper($this->getConfig());
     }
 
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Mapper\AdyenApiMapperInterface
      */
-    public function createAuthorise3dMapper(): AdyenApiMapperInterface
+    public function createAuthorize3dMapper(): AdyenApiMapperInterface
     {
-        return new Authorise3dMapper($this->getConfig());
+        return new Authorize3dMapper($this->getConfig());
     }
 
     /**
@@ -522,9 +522,9 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Mapper\AdyenApiMapperInterface
      */
-    public function createAdjustAuthorisationMapper(): AdyenApiMapperInterface
+    public function createAdjustAuthorizationMapper(): AdyenApiMapperInterface
     {
-        return new AdjustAuthorisationMapper($this->getConfig());
+        return new AdjustAuthorizationMapper($this->getConfig());
     }
 
     /**

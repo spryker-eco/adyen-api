@@ -7,13 +7,13 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Adapter;
 
-class AuthoriseAdapter extends AbstractAdapter implements AdyenApiAdapterInterface
+class Authorize3dAdapter extends AbstractAdapter implements AdyenApiAdapterInterface
 {
     /**
      * @return string
      */
     protected function getUrl(): string
     {
-        return $this->config->getAuthoriseActionUrl();
+        return $this->config->getAuthorize3dActionUrl();
     }
 }

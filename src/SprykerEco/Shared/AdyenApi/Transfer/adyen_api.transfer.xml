@@ -9,14 +9,14 @@
         <property name="paymentMethodsRequest" type="AdyenApiGetPaymentMethodsRequest" />
         <property name="makePaymentRequest" type="AdyenApiMakePaymentRequest" />
         <property name="paymentsDetailsRequest" type="AdyenApiPaymentsDetailsRequest" />
-        <property name="authoriseRequest" type="AdyenApiAuthoriseRequest" />
-        <property name="authorise3dRequest" type="AdyenApiAuthorise3dRequest" />
+        <property name="authorizeRequest" type="AdyenApiAuthorizeRequest" />
+        <property name="authorize3dRequest" type="AdyenApiAuthorize3dRequest" />
         <property name="captureRequest" type="AdyenApiCaptureRequest" />
         <property name="cancelRequest" type="AdyenApiCancelRequest" />
         <property name="refundRequest" type="AdyenApiRefundRequest" />
         <property name="cancelOrRefundRequest" type="AdyenApiCancelOrRefundRequest" />
         <property name="technicalCancelRequest" type="AdyenApiTechnicalCancelRequest" />
-        <property name="adjustAuthorisationRequest" type="AdyenApiAdjustAuthorisationRequest" />
+        <property name="adjustAuthorizationRequest" type="AdyenApiAdjustAuthorizationRequest" />
     </transfer>
 
     <transfer name="AdyenApiGetPaymentMethodsRequest">
@@ -83,7 +83,7 @@
         <property name="details" type="array" />
     </transfer>
 
-    <transfer name="AdyenApiAuthoriseRequest">
+    <transfer name="AdyenApiAuthorizeRequest">
         <property name="additionalAmount" type="AdyenApiAmount" />
         <property name="additionalData" type="array" />
         <property name="amount" type="AdyenApiAmount" />
@@ -121,7 +121,7 @@
         <property name="shopperName" type="array" />
     </transfer>
 
-    <transfer name="AdyenApiAuthorise3dRequest">
+    <transfer name="AdyenApiAuthorize3dRequest">
         <property name="additionalAmount" type="AdyenApiAmount" />
         <property name="additionalData" type="array" />
         <property name="amount" type="AdyenApiAmount" />
@@ -244,7 +244,7 @@
         <property name="uniqueTerminalId" type="string" />
     </transfer>
 
-    <transfer name="AdyenApiAdjustAuthorisationRequest">
+    <transfer name="AdyenApiAdjustAuthorizationRequest">
         <property name="additionalData" type="array" />
         <property name="merchantAccount" type="string" />
         <property name="modificationAmount" type="AdyenApiAmount" />
@@ -264,14 +264,14 @@
         <property name="paymentMethods" type="AdyenApiPaymentMethod[]" />
         <property name="makePaymentResponse" type="AdyenApiMakePaymentResponse" />
         <property name="paymentsDetailsResponse" type="AdyenApiPaymentsDetailsResponse" />
-        <property name="authoriseResponse" type="AdyenApiAuthoriseResponse" />
-        <property name="authorise3dResponse" type="AdyenApiAuthorise3dResponse" />
+        <property name="authorizeResponse" type="AdyenApiAuthorizeResponse" />
+        <property name="authorize3dResponse" type="AdyenApiAuthorize3dResponse" />
         <property name="captureResponse" type="AdyenApiCaptureResponse" />
         <property name="cancelResponse" type="AdyenApiCancelResponse" />
         <property name="refundResponse" type="AdyenApiRefundResponse" />
         <property name="cancelOrRefundResponse" type="AdyenApiCancelOrRefundResponse" />
         <property name="technicalCancelResponse" type="AdyenApiTechnicalCancelResponse" />
-        <property name="adjustAuthorisationResponse" type="AdyenApiAdjustAuthorisationResponse" />
+        <property name="adjustAuthorizationResponse" type="AdyenApiAdjustAuthorizationResponse" />
     </transfer>
 
     <transfer name="AdyenApiErrorResponse">
@@ -315,7 +315,7 @@
         <property name="redirect" type="AdyenApiMakePaymentResponseRedirect" />
     </transfer>
 
-    <transfer name="AdyenApiAuthoriseResponse">
+    <transfer name="AdyenApiAuthorizeResponse">
         <property name="additionalData" type="array" />
         <property name="authCode" type="string" />
         <property name="dccAmount" type="AdyenApiAmount" />
@@ -329,7 +329,7 @@
         <property name="resultCode" type="string" />
     </transfer>
 
-    <transfer name="AdyenApiAuthorise3dResponse">
+    <transfer name="AdyenApiAuthorize3dResponse">
         <property name="additionalData" type="array" />
         <property name="authCode" type="string" />
         <property name="dccAmount" type="AdyenApiAmount" />
@@ -373,7 +373,7 @@
         <property name="response" type="string" />
     </transfer>
 
-    <transfer name="AdyenApiAdjustAuthorisationResponse">
+    <transfer name="AdyenApiAdjustAuthorizationResponse">
         <property name="additionalData" type="array" />
         <property name="pspReference" type="string" />
         <property name="response" type="string" />

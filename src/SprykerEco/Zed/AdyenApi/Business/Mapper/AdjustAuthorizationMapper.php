@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\AdyenApi\Business\Mapper;
 
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 
-class AuthoriseMapper extends AbstractMapper implements AdyenApiMapperInterface
+class AdjustAuthorizationMapper extends AbstractMapper implements AdyenApiMapperInterface
 {
     /**
      * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $adyenApiRequestTransfer
@@ -20,7 +20,7 @@ class AuthoriseMapper extends AbstractMapper implements AdyenApiMapperInterface
     {
         $this->validateRequestTransfer($adyenApiRequestTransfer);
 
-        $requestDataArray = $adyenApiRequestTransfer->getAuthoriseRequest()->toArray(true, true);
+        $requestDataArray = $adyenApiRequestTransfer->getAdjustAuthorizationRequest()->toArray(true, true);
 
         return $this->removeRedundantParams($requestDataArray);
     }
@@ -32,17 +32,17 @@ class AuthoriseMapper extends AbstractMapper implements AdyenApiMapperInterface
      */
     protected function validateRequestTransfer(AdyenApiRequestTransfer $adyenApiRequestTransfer): void
     {
-        $adyenApiRequestTransfer->requireAuthoriseRequest();
+        $adyenApiRequestTransfer->requireAdjustAuthorizationRequest();
 
         $adyenApiRequestTransfer
-            ->getAuthoriseRequest()
-            ->requireAmount()
+            ->getAdjustAuthorizationRequest()
+            ->requireModificationAmount()
             ->requireMerchantAccount()
-            ->requireReference();
+            ->requireOriginalReference();
 
         $adyenApiRequestTransfer
-            ->getAuthoriseRequest()
-            ->getAmount()
+            ->getAdjustAuthorizationRequest()
+            ->getModificationAmount()
             ->requireCurrency()
             ->requireValue();
     }

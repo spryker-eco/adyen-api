@@ -7,16 +7,16 @@
 
 namespace SprykerEco\Zed\AdyenApi\Communication\Console;
 
-use Generated\Shared\Transfer\AdyenApiAuthoriseRequestTransfer;
+use Generated\Shared\Transfer\AdyenApiAuthorizeRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use SprykerEco\Zed\AdyenApi\Business\AdyenApiFacade;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class AuthoriseConsoleCommand extends Console
+class AuthorizeConsoleCommand extends Console
 {
-    const COMMAND_NAME = 'adyen-api:test:authorise';
+    const COMMAND_NAME = 'adyen-api:test:authorize';
 
     /**
      * @return void
@@ -24,7 +24,7 @@ class AuthoriseConsoleCommand extends Console
     protected function configure()
     {
         $this->setName(static::COMMAND_NAME);
-        $this->setDescription('AdyenApi Test Facade methods authorise');
+        $this->setDescription('AdyenApi Test Facade methods authorize');
     }
 
     /**
@@ -36,7 +36,7 @@ class AuthoriseConsoleCommand extends Console
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $app = new AdyenApiFacade();
-        $response = $app->performAuthoriseApiCall($this->createRequestTransfer());
+        $response = $app->performAuthorizeApiCall($this->createRequestTransfer());
 
         echo json_encode($response->toArray(true, true), JSON_PRETTY_PRINT);
     }
@@ -47,8 +47,8 @@ class AuthoriseConsoleCommand extends Console
     protected function createRequestTransfer()
     {
         return (new AdyenApiRequestTransfer())
-            ->setMakePaymentRequest(
-                (new AdyenApiAuthoriseRequestTransfer())
+            ->setAuthorizeRequest(
+                (new AdyenApiAuthorizeRequestTransfer())
             );
     }
 }

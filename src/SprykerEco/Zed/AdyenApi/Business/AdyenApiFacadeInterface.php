@@ -53,7 +53,7 @@ interface AdyenApiFacadeInterface
 
     /**
      * Specification:
-     * - Make API call to Adyen to authorise payment.
+     * - Make API call to Adyen to authorize payment.
      *
      * @api
      *
@@ -61,11 +61,11 @@ interface AdyenApiFacadeInterface
      *
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    public function performAuthoriseApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
+    public function performAuthorizeApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
 
     /**
      * Specification:
-     * - Completes the payment authorisation for an authenticated 3D Secure session.
+     * - Completes the payment authorization for an authenticated 3D Secure session.
      *
      * @api
      *
@@ -73,11 +73,11 @@ interface AdyenApiFacadeInterface
      *
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    public function performAuthorise3dApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
+    public function performAuthorize3dApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
 
     /**
      * Specification:
-     * - Captures the authorisation hold on a payment.
+     * - Captures the authorization hold on a payment.
      *
      * @api
      *
@@ -89,7 +89,7 @@ interface AdyenApiFacadeInterface
 
     /**
      * Specification:
-     * - Cancels the authorisation hold on a payment
+     * - Cancels the authorization hold on a payment
      *
      * @api
      *
@@ -125,7 +125,7 @@ interface AdyenApiFacadeInterface
 
     /**
      * Specification:
-     * - Cancels a previously authorised payment using a custom reference value.
+     * - Cancels a previously authorized payment using a custom reference value.
      *
      * @api
      *
@@ -137,7 +137,7 @@ interface AdyenApiFacadeInterface
 
     /**
      * Specification:
-     * - Allows you to increase or decrease the authorised amount after the initial authorisation has taken place.
+     * - Allows you to increase or decrease the authorized amount after the initial authorization has taken place.
      *
      * @api
      *
@@ -145,5 +145,5 @@ interface AdyenApiFacadeInterface
      *
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    public function performAdjustAuthorisationApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
+    public function performAdjustAuthorizationApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
 }

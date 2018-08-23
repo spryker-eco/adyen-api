@@ -7,10 +7,10 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Converter;
 
-use Generated\Shared\Transfer\AdyenApiAuthorise3dResponseTransfer;
+use Generated\Shared\Transfer\AdyenApiAdjustAuthorizationResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiResponseTransfer;
 
-class Authorise3dConverter extends AbstractConverter implements AdyenApiConverterInterface
+class AdjustAuthorizationConverter extends AbstractConverter implements AdyenApiConverterInterface
 {
     /**
      * @param \Generated\Shared\Transfer\AdyenApiResponseTransfer $responseTransfer
@@ -20,8 +20,8 @@ class Authorise3dConverter extends AbstractConverter implements AdyenApiConverte
      */
     protected function updateResponseTransfer(AdyenApiResponseTransfer $responseTransfer, array $response): AdyenApiResponseTransfer
     {
-        $apiResponseTransfer = (new AdyenApiAuthorise3dResponseTransfer())->fromArray($response, true);
+        $apiResponseTransfer = (new AdyenApiAdjustAuthorizationResponseTransfer())->fromArray($response, true);
 
-        return $responseTransfer->setAuthorise3dResponse($apiResponseTransfer);
+        return $responseTransfer->setAdjustAuthorizationResponse($apiResponseTransfer);
     }
 }

@@ -8,16 +8,16 @@
 namespace SprykerEco\Zed\AdyenApi\Communication\Console;
 
 use Generated\Shared\Transfer\AdyenApiAmountTransfer;
-use Generated\Shared\Transfer\AdyenApiAuthorise3dRequestTransfer;
+use Generated\Shared\Transfer\AdyenApiAuthorize3dRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use SprykerEco\Zed\AdyenApi\Business\AdyenApiFacade;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Authorise3dConsoleCommand extends Console
+class Authorize3dConsoleCommand extends Console
 {
-    const COMMAND_NAME = 'adyen-api:test:authorise3d';
+    const COMMAND_NAME = 'adyen-api:test:authorize3d';
 
     /**
      * @return void
@@ -25,7 +25,7 @@ class Authorise3dConsoleCommand extends Console
     protected function configure()
     {
         $this->setName(static::COMMAND_NAME);
-        $this->setDescription('AdyenApi Test Facade methods authorise 3d');
+        $this->setDescription('AdyenApi Test Facade methods authorize 3d');
     }
 
     /**
@@ -37,7 +37,7 @@ class Authorise3dConsoleCommand extends Console
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $app = new AdyenApiFacade();
-        $response = $app->performAuthorise3dApiCall($this->createRequestTransfer());
+        $response = $app->performAuthorize3dApiCall($this->createRequestTransfer());
 
         echo json_encode($response->toArray(true, true), JSON_PRETTY_PRINT);
     }
@@ -48,8 +48,8 @@ class Authorise3dConsoleCommand extends Console
     protected function createRequestTransfer()
     {
         return (new AdyenApiRequestTransfer())
-            ->setAuthorise3dRequest(
-                (new AdyenApiAuthorise3dRequestTransfer())
+            ->setAuthorize3dRequest(
+                (new AdyenApiAuthorize3dRequestTransfer())
                     ->setMerchantAccount('SprykerCOM')
                     ->setReference('1234556778890wqecdas123drrg')
                     ->setAmount(
