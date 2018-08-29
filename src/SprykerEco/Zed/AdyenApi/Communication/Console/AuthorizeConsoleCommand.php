@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Zed\AdyenApi\Communication\Console;
 
+use Generated\Shared\Transfer\AdyenApiAmountTransfer;
 use Generated\Shared\Transfer\AdyenApiAuthorizeRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 use Spryker\Zed\Kernel\Communication\Console\Console;
@@ -49,6 +50,20 @@ class AuthorizeConsoleCommand extends Console
         return (new AdyenApiRequestTransfer())
             ->setAuthorizeRequest(
                 (new AdyenApiAuthorizeRequestTransfer())
+                    ->setAdditionalData(
+                        [
+                            "sepadirectdebit.sequenceType" => "OneOff",
+                            "sepadirectdebit.dateOfSignature" => "2018-08-27",
+                            "sepadirectdebit.mandateId" => "8815353542477270"
+                        ]
+                    )
+                    ->setAmount(
+                        (new AdyenApiAmountTransfer())
+                            ->setCurrency('EUR')
+                            ->setValue(1990)
+                    )
+                    ->setMerchantAccount('SprykerCOM')
+                    ->setReference('1234556778890wqecdas123drrg')
             );
     }
 }
