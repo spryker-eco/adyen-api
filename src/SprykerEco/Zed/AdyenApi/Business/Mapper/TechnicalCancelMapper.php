@@ -36,14 +36,7 @@ class TechnicalCancelMapper extends AbstractMapper implements AdyenApiMapperInte
 
         $adyenApiRequestTransfer
             ->getTechnicalCancelRequest()
-            ->requireModificationAmount()
             ->requireMerchantAccount()
             ->requireOriginalReference();
-
-        $adyenApiRequestTransfer
-            ->getTechnicalCancelRequest()
-            ->getModificationAmount()
-            ->requireCurrency()
-            ->requireValue();
     }
 }

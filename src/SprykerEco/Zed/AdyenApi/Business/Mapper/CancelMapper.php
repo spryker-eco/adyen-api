@@ -36,14 +36,7 @@ class CancelMapper extends AbstractMapper implements AdyenApiMapperInterface
 
         $adyenApiRequestTransfer
             ->getCancelRequest()
-            ->requireModificationAmount()
             ->requireMerchantAccount()
             ->requireOriginalReference();
-
-        $adyenApiRequestTransfer
-            ->getCancelRequest()
-            ->getModificationAmount()
-            ->requireCurrency()
-            ->requireValue();
     }
 }

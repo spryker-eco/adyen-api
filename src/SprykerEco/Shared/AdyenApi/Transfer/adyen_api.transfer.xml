@@ -203,7 +203,6 @@
     <transfer name="AdyenApiCancelRequest">
         <property name="additionalData" type="array" />
         <property name="merchantAccount" type="string" />
-        <property name="modificationAmount" type="AdyenApiAmount" />
         <property name="originalMerchantReference" type="string" />
         <property name="originalReference" type="string" />
         <property name="reference" type="string" />
@@ -225,7 +224,6 @@
     <transfer name="AdyenApiCancelOrRefundRequest">
         <property name="additionalData" type="array" />
         <property name="merchantAccount" type="string" />
-        <property name="modificationAmount" type="AdyenApiAmount" />
         <property name="originalMerchantReference" type="string" />
         <property name="originalReference" type="string" />
         <property name="reference" type="string" />
@@ -236,7 +234,6 @@
     <transfer name="AdyenApiTechnicalCancelRequest">
         <property name="additionalData" type="array" />
         <property name="merchantAccount" type="string" />
-        <property name="modificationAmount" type="AdyenApiAmount" />
         <property name="originalMerchantReference" type="string" />
         <property name="originalReference" type="string" />
         <property name="reference" type="string" />
