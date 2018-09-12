@@ -27,9 +27,8 @@ abstract class AbstractMapper
     /**
      * @param \SprykerEco\Zed\AdyenApi\AdyenApiConfig $config
      */
-    public function __construct(
-        AdyenApiConfig $config
-    ) {
+    public function __construct(AdyenApiConfig $config)
+    {
         $this->config = $config;
     }
 
@@ -40,11 +39,9 @@ abstract class AbstractMapper
      */
     protected function removeRedundantParams(array $data): array
     {
-        foreach ($data as $key => $value) {
-            if ($value === null || (is_array($value) && count($value) === 0)) {
-                unset($data[$key]);
-            }
-        }
+        $data = array_filter($data, function ($value) {
+            return !empty($value) ?? null;
+        });
 
         return $data;
     }

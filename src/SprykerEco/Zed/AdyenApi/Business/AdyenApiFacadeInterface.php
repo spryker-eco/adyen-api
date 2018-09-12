@@ -15,7 +15,7 @@ interface AdyenApiFacadeInterface
     /**
      * Specification:
      * - Queries the available payment methods for a transaction based on the transaction context.
-     * - Giving back a list of the available payment methods.
+     * - Gives back a list of the available payment methods.
      * - The response also returns which input details you need to collect from the shopper.
      *
      * @api

@@ -22,6 +22,8 @@ class AdyenApiDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
+        $container = parent::provideCommunicationLayerDependencies($container);
+
         return $container;
     }
 
@@ -32,6 +34,7 @@ class AdyenApiDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
+        $container = parent::provideBusinessLayerDependencies($container);
         $container = $this->addUtilEncodingService($container);
 
         return $container;
