@@ -67,7 +67,7 @@ class AdyenApiRequest implements AdyenApiRequestInterface
      */
     public function request(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer
     {
-        $requestData = $this->mapper->buildRequest($requestTransfer);
+        $requestData = $this->mapper->buildRequestArray($requestTransfer);
         $isSuccess = true;
 
         try {

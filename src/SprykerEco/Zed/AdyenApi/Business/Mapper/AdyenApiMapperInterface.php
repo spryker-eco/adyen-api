@@ -16,5 +16,5 @@ interface AdyenApiMapperInterface
      *
      * @return array
      */
-    public function buildRequest(AdyenApiRequestTransfer $requestTransfer): array;
+    public function buildRequestArray(AdyenApiRequestTransfer $requestTransfer): array;
 }

@@ -16,7 +16,7 @@ class CancelMapper extends AbstractMapper implements AdyenApiMapperInterface
      *
      * @return array
      */
-    public function buildRequest(AdyenApiRequestTransfer $adyenApiRequestTransfer): array
+    public function buildRequestArray(AdyenApiRequestTransfer $adyenApiRequestTransfer): array
     {
         $this->validateRequestTransfer($adyenApiRequestTransfer);
 
