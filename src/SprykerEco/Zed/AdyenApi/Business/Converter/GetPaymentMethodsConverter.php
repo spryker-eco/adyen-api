@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\AdyenApi\Business\Converter;
 
 use Generated\Shared\Transfer\AdyenApiResponseTransfer;
 
-class GetPaymentMethodsConverter extends AbstractConverter implements AdyenApiConverterInterface
+class GetPaymentMethodsConverter extends AbstractConverter
 {
     /**
      * @param \Generated\Shared\Transfer\AdyenApiResponseTransfer $responseTransfer

@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Adapter;
 
-class AuthorizeAdapter extends AbstractAdapter implements AdyenApiAdapterInterface
+class AuthorizeAdapter extends AbstractAdapter
 {
     /**
      * @return string

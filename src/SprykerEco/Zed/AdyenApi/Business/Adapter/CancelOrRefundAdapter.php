@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Adapter;
 
-class CancelOrRefundAdapter extends AbstractAdapter implements AdyenApiAdapterInterface
+class CancelOrRefundAdapter extends AbstractAdapter
 {
     /**
      * @return string

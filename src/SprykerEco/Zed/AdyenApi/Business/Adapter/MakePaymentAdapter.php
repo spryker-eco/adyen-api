@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Adapter;
 
-class MakePaymentAdapter extends AbstractAdapter implements AdyenApiAdapterInterface
+class MakePaymentAdapter extends AbstractAdapter
 {
     /**
      * @return string

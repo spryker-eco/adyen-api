@@ -10,7 +10,7 @@ namespace SprykerEco\Zed\AdyenApi\Business\Converter;
 use Generated\Shared\Transfer\AdyenApiAdjustAuthorizationResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiResponseTransfer;
 
-class AdjustAuthorizationConverter extends AbstractConverter implements AdyenApiConverterInterface
+class AdjustAuthorizationConverter extends AbstractConverter
 {
     /**
      * @param \Generated\Shared\Transfer\AdyenApiResponseTransfer $responseTransfer

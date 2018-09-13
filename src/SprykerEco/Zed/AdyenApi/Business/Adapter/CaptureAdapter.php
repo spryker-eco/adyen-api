@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Adapter;
 
-class CaptureAdapter extends AbstractAdapter implements AdyenApiAdapterInterface
+class CaptureAdapter extends AbstractAdapter
 {
     /**
      * @return string
