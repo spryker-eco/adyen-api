@@ -35,6 +35,7 @@
         <property name="returnUrl" type="string" />
 
         <!-- Optional -->
+        <property name="selectedBrand" type="string" />
         <property name="additionalData" type="array" />
         <property name="billingAddress" type="AdyenApiAddress" />
         <property name="captureDelayHours" type="int" />
@@ -48,7 +49,7 @@
         <property name="shopperEmail" type="string" />
         <property name="shopperIP" type="string" />
         <property name="shopperLocale" type="string" />  <!-- en_GB de_DE -->
-        <property name="shopperName" type="string" />  <!-- The shopper's full name and gender (if specified) -->
+        <property name="shopperName" type="AdyenApiName" />  <!-- The shopper's full name and gender (if specified) -->
         <property name="shopperReference" type="string" />  <!-- Customer ID -->
         <property name="shopperStatement" type="string" />  <!-- The text to appear on the shopper's bank statement. -->
         <property name="socialSecurityNumber" type="string" />  <!-- The shopper's social security number -->
@@ -58,6 +59,13 @@
     <transfer name="AdyenApiAmount">
         <property name="currency" type="string" />
         <property name="value" type="int" />
+    </transfer>
+
+    <transfer name="AdyenApiName">
+        <property name="firstName" type="string" />
+        <property name="gender" type="string" />
+        <property name="infix" type="string" />
+        <property name="lastName" type="string" />
     </transfer>
 
     <transfer name="AdyenApiAddress">
