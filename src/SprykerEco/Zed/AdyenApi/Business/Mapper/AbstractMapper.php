@@ -39,9 +39,12 @@ abstract class AbstractMapper
      */
     protected function removeRedundantParams(array $data): array
     {
-        $data = array_filter($data, function ($value) {
-            return !empty($value) ?? null;
-        });
+        $data = array_filter($data);
+        foreach ($data as $key => $value) {
+            if (is_array($value)) {
+                $data[$key] = $this->removeRedundantParams($value);
+            }
+        }
 
         return $data;
     }

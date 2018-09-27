@@ -54,11 +54,23 @@
         <property name="shopperStatement" type="string" />  <!-- The text to appear on the shopper's bank statement. -->
         <property name="socialSecurityNumber" type="string" />  <!-- The shopper's social security number -->
         <property name="telephoneNumber" type="string" />
+        <property name="lineItems" type="AdyenApiLineItem[]" />
     </transfer>
 
     <transfer name="AdyenApiAmount">
         <property name="currency" type="string" />
         <property name="value" type="int" />
+    </transfer>
+
+    <transfer name="AdyenApiLineItem">
+        <property name="id" type="string" />
+        <property name="quantity" type="int" />
+        <property name="description" type="string" />
+        <property name="amountExcludingTax" type="int" />
+        <property name="amountIncludingTax" type="int" />
+        <property name="taxAmount" type="int" />
+        <property name="taxPercentage" type="int" />
+        <property name="taxCategory" type="string" />
     </transfer>
 
     <transfer name="AdyenApiName">
