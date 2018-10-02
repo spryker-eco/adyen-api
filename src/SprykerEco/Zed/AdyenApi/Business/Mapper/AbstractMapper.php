@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Zed\AdyenApi\Business\Mapper;
 
+use ArrayObject;
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 use SprykerEco\Zed\AdyenApi\AdyenApiConfig;
 
@@ -39,9 +40,15 @@ abstract class AbstractMapper
      */
     protected function removeRedundantParams(array $data): array
     {
-        $data = array_filter($data);
+        $data = array_filter($data , function ($item) {
+            if ($item instanceof ArrayObject) {
+                return $item->count() !== 0;
+            }
+            return !empty($item);
+        });
+
         foreach ($data as $key => $value) {
-            if (is_array($value)) {
+            if (is_array($value) || $value instanceof ArrayObject) {
                 $data[$key] = $this->removeRedundantParams($value);
             }
         }
