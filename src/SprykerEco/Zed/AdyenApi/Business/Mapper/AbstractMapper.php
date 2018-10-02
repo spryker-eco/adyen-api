@@ -40,7 +40,7 @@ abstract class AbstractMapper
      */
     protected function removeRedundantParams(array $data): array
     {
-        $data = array_filter($data , function ($item) {
+        $data = array_filter($data, function ($item) {
             if ($item instanceof ArrayObject) {
                 return $item->count() !== 0;
             }
