@@ -60,7 +60,7 @@ class FacadeTestHelper extends Test
                 'getUtilEncodingService',
                 'createGetPaymentMethodsAdapter',
                 'createMakePaymentAdapter',
-                'createPaymentsDetailAdapter',
+                'createPaymentDetailsAdapter',
                 'createCaptureAdapter',
                 'createCancelAdapter',
                 'createRefundAdapter',
