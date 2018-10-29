@@ -24,7 +24,7 @@ use Generated\Shared\Transfer\AdyenApiTechnicalCancelResponseTransfer;
  * @group Functional
  * @group SprykerEco
  * @group Zed
- * @group ComputopApi
+ * @group AdyenApi
  * @group Business
  */
 class FacadeTest extends Test
