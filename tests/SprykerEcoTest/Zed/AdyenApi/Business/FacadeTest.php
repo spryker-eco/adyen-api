@@ -15,8 +15,8 @@ use Generated\Shared\Transfer\AdyenApiCancelOrRefundResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiCancelResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiCaptureResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiMakePaymentResponseTransfer;
-use Generated\Shared\Transfer\AdyenApiPaymentMethodTransfer;
 use Generated\Shared\Transfer\AdyenApiPaymentDetailsResponseTransfer;
+use Generated\Shared\Transfer\AdyenApiPaymentMethodTransfer;
 use Generated\Shared\Transfer\AdyenApiRefundResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiTechnicalCancelResponseTransfer;
 
