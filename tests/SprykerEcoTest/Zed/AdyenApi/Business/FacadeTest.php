@@ -156,7 +156,7 @@ class FacadeTest extends Test
         );
         $this->assertNotEmpty($responseTransfer->getCaptureResponse()->getPspReference());
         $this->assertNotEmpty($responseTransfer->getCaptureResponse()->getResponse());
-        $this->assertEquals('[capture-received]', $responseTransfer->getCaptureResponse()->getResponse());
+        $this->assertEquals(FacadeTestConstants::RESPONSE_CAPTURE_RECEIVED, $responseTransfer->getCaptureResponse()->getResponse());
     }
 
     /**
@@ -176,7 +176,7 @@ class FacadeTest extends Test
         );
         $this->assertNotEmpty($responseTransfer->getCancelResponse()->getPspReference());
         $this->assertNotEmpty($responseTransfer->getCancelResponse()->getResponse());
-        $this->assertEquals('[cancel-received]', $responseTransfer->getCancelResponse()->getResponse());
+        $this->assertEquals(FacadeTestConstants::RESPONSE_CANCEL_RECEIVED, $responseTransfer->getCancelResponse()->getResponse());
     }
 
     /**
@@ -196,7 +196,7 @@ class FacadeTest extends Test
         );
         $this->assertNotEmpty($responseTransfer->getRefundResponse()->getPspReference());
         $this->assertNotEmpty($responseTransfer->getRefundResponse()->getResponse());
-        $this->assertEquals('[refund-received]', $responseTransfer->getRefundResponse()->getResponse());
+        $this->assertEquals(FacadeTestConstants::RESPONSE_REFUND_RECEIVED, $responseTransfer->getRefundResponse()->getResponse());
     }
 
     /**
@@ -216,7 +216,7 @@ class FacadeTest extends Test
         );
         $this->assertNotEmpty($responseTransfer->getCancelOrRefundResponse()->getPspReference());
         $this->assertNotEmpty($responseTransfer->getCancelOrRefundResponse()->getResponse());
-        $this->assertEquals('[cancelOrRefund-received]', $responseTransfer->getCancelOrRefundResponse()->getResponse());
+        $this->assertEquals(FacadeTestConstants::RESPONSE_CANCEL_OR_REFUND_RECEIVED, $responseTransfer->getCancelOrRefundResponse()->getResponse());
     }
 
     /**

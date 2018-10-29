@@ -39,4 +39,9 @@ interface FacadeTestConstants
     public const RESPONSE_BODY_CANCEL = '{"pspReference":"8535408002754771","response":"[cancel-received]"}';
     public const RESPONSE_BODY_REFUND = '{"pspReference":"8535408002754771","response":"[refund-received]"}';
     public const RESPONSE_BODY_CANCEL_OR_REFUND = '{"pspReference":"8535408002754771","response":"[cancelOrRefund-received]"}';
+
+    public const RESPONSE_CAPTURE_RECEIVED = '[capture-received]';
+    public const RESPONSE_CANCEL_RECEIVED = '[cancel-received]';
+    public const RESPONSE_REFUND_RECEIVED = '[refund-received]';
+    public const RESPONSE_CANCEL_OR_REFUND_RECEIVED = '[cancelOrRefund-received]';
 }
