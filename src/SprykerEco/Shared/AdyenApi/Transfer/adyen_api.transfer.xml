@@ -8,7 +8,7 @@
     <transfer name="AdyenApiRequest">
         <property name="paymentMethodsRequest" type="AdyenApiGetPaymentMethodsRequest" />
         <property name="makePaymentRequest" type="AdyenApiMakePaymentRequest" />
-        <property name="paymentsDetailsRequest" type="AdyenApiPaymentsDetailsRequest" />
+        <property name="paymentDetailsRequest" type="AdyenApiPaymentDetailsRequest" />
         <property name="authorizeRequest" type="AdyenApiAuthorizeRequest" />
         <property name="authorize3dRequest" type="AdyenApiAuthorize3dRequest" />
         <property name="captureRequest" type="AdyenApiCaptureRequest" />
@@ -98,7 +98,7 @@
         <property name="type" type="string" />
     </transfer>
 
-    <transfer name="AdyenApiPaymentsDetailsRequest">
+    <transfer name="AdyenApiPaymentDetailsRequest">
         <property name="paymentData" type="string" />
         <property name="details" type="array" />
     </transfer>
@@ -281,7 +281,7 @@
         <property name="error" type="AdyenApiErrorResponse" />
         <property name="paymentMethods" type="AdyenApiPaymentMethod[]" />
         <property name="makePaymentResponse" type="AdyenApiMakePaymentResponse" />
-        <property name="paymentsDetailsResponse" type="AdyenApiPaymentsDetailsResponse" />
+        <property name="paymentDetailsResponse" type="AdyenApiPaymentDetailsResponse" />
         <property name="authorizeResponse" type="AdyenApiAuthorizeResponse" />
         <property name="authorize3dResponse" type="AdyenApiAuthorize3dResponse" />
         <property name="captureResponse" type="AdyenApiCaptureResponse" />
@@ -322,7 +322,7 @@
         <property name="url" type="string" />
     </transfer>
 
-    <transfer name="AdyenApiPaymentsDetailsResponse">
+    <transfer name="AdyenApiPaymentDetailsResponse">
         <property name="pspReference" type="string" />
         <property name="resultCode" type="string" />
         <property name="refusalReason" type="string" />

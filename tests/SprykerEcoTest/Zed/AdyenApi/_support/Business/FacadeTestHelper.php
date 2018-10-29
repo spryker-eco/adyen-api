@@ -14,7 +14,7 @@ use Generated\Shared\Transfer\AdyenApiCancelRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiCaptureRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiGetPaymentMethodsRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiMakePaymentRequestTransfer;
-use Generated\Shared\Transfer\AdyenApiPaymentsDetailsRequestTransfer;
+use Generated\Shared\Transfer\AdyenApiPaymentDetailsRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiRefundRequestTransfer;
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 use GuzzleHttp\Psr7\Response;
@@ -27,7 +27,7 @@ use SprykerEco\Zed\AdyenApi\Business\Adapter\CancelOrRefundAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\CaptureAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\GetPaymentMethodsAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\MakePaymentAdapter;
-use SprykerEco\Zed\AdyenApi\Business\Adapter\PaymentsDetailsAdapter;
+use SprykerEco\Zed\AdyenApi\Business\Adapter\PaymentDetailsAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\RefundAdapter;
 use SprykerEco\Zed\AdyenApi\Business\AdyenApiBusinessFactory;
 use SprykerEco\Zed\AdyenApi\Business\AdyenApiFacade;
@@ -60,7 +60,7 @@ class FacadeTestHelper extends Test
                 'getUtilEncodingService',
                 'createGetPaymentMethodsAdapter',
                 'createMakePaymentAdapter',
-                'createPaymentsDetailsAdapter',
+                'createPaymentsDetailAdapter',
                 'createCaptureAdapter',
                 'createCancelAdapter',
                 'createRefundAdapter',
@@ -77,8 +77,8 @@ class FacadeTestHelper extends Test
             ->willReturn($this->createGetPaymentMethodsAdapter());
         $stub->method('createMakePaymentAdapter')
             ->willReturn($this->createMakePaymentAdapter());
-        $stub->method('createPaymentsDetailsAdapter')
-            ->willReturn($this->createPaymentsDetailsAdapter());
+        $stub->method('createPaymentDetailsAdapter')
+            ->willReturn($this->createPaymentDetailsAdapter());
         $stub->method('createCaptureAdapter')
             ->willReturn($this->createCaptureAdapter());
         $stub->method('createCancelAdapter')
@@ -99,7 +99,7 @@ class FacadeTestHelper extends Test
         $requestTransfer = (new AdyenApiRequestTransfer())
             ->setPaymentMethodsRequest($this->createGetPaymentMethodsRequestTransfer())
             ->setMakePaymentRequest($this->createMakePaymentRequestTransfer())
-            ->setPaymentsDetailsRequest($this->createPaymentsDetailsRequestTransfer())
+            ->setPaymentDetailsRequest($this->createPaymentDetailsRequestTransfer())
             ->setCaptureRequest($this->createCaptureRequestTransfer())
             ->setCancelRequest($this->createCancelRequestTransfer())
             ->setRefundRequest($this->createRefundRequestTransfer())
@@ -147,15 +147,15 @@ class FacadeTestHelper extends Test
     }
 
     /**
-     * @return \Generated\Shared\Transfer\AdyenApiPaymentsDetailsRequestTransfer
+     * @return \Generated\Shared\Transfer\AdyenApiPaymentDetailsRequestTransfer
      */
-    protected function createPaymentsDetailsRequestTransfer(): AdyenApiPaymentsDetailsRequestTransfer
+    protected function createPaymentDetailsRequestTransfer(): AdyenApiPaymentDetailsRequestTransfer
     {
-        $paymentsDetailsRequestTransfer = (new AdyenApiPaymentsDetailsRequestTransfer())
+        $paymentDetailsRequestTransfer = (new AdyenApiPaymentDetailsRequestTransfer())
             ->setPaymentData(FacadeTestConstants::REQUEST_DETAILS_PAYMENT_DATA)
             ->setDetails(FacadeTestConstants::REQUEST_DETAILS);
 
-        return $paymentsDetailsRequestTransfer;
+        return $paymentDetailsRequestTransfer;
     }
 
     /**
@@ -270,9 +270,9 @@ class FacadeTestHelper extends Test
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Zed\AdyenApi\Business\Adapter\AdyenApiAdapterInterface
      */
-    protected function createPaymentsDetailsAdapter(): AdyenApiAdapterInterface
+    protected function createPaymentDetailsAdapter(): AdyenApiAdapterInterface
     {
-        $stub = $this->createMock(PaymentsDetailsAdapter::class);
+        $stub = $this->createMock(PaymentDetailsAdapter::class);
         $stub->method('sendRequest')
             ->willReturn($this->createResponse(FacadeTestConstants::RESPONSE_BODY_PAYMENT_DETAILS));
 

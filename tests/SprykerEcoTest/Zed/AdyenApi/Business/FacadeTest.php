@@ -16,7 +16,7 @@ use Generated\Shared\Transfer\AdyenApiCancelResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiCaptureResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiMakePaymentResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiPaymentMethodTransfer;
-use Generated\Shared\Transfer\AdyenApiPaymentsDetailsResponseTransfer;
+use Generated\Shared\Transfer\AdyenApiPaymentDetailsResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiRefundResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiTechnicalCancelResponseTransfer;
 
@@ -85,20 +85,20 @@ class FacadeTest extends Test
     /**
      * @return void
      */
-    public function testPerformPaymentsDetailsApiCall(): void
+    public function testPerformPaymentDetailsApiCall(): void
     {
         $facade = $this->helper->createFacade();
         $requestTransfer = $this->helper->createAdyenApiRequestTransfer();
-        $responseTransfer = $facade->performPaymentsDetailsApiCall($requestTransfer);
+        $responseTransfer = $facade->performPaymentDetailsApiCall($requestTransfer);
 
         $this->assertTrue($responseTransfer->getIsSuccess());
         $this->assertNull($responseTransfer->getError());
         $this->assertInstanceOf(
-            AdyenApiPaymentsDetailsResponseTransfer::class,
-            $responseTransfer->getPaymentsDetailsResponse()
+            AdyenApiPaymentDetailsResponseTransfer::class,
+            $responseTransfer->getPaymentDetailsResponse()
         );
-        $this->assertNotEmpty($responseTransfer->getPaymentsDetailsResponse()->getResultCode());
-        $this->assertNotEmpty($responseTransfer->getPaymentsDetailsResponse()->getPspReference());
+        $this->assertNotEmpty($responseTransfer->getPaymentDetailsResponse()->getResultCode());
+        $this->assertNotEmpty($responseTransfer->getPaymentDetailsResponse()->getPspReference());
     }
 
     /**

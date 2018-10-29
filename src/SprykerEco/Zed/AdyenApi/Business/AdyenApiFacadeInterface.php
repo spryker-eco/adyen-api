@@ -49,7 +49,7 @@ interface AdyenApiFacadeInterface
      *
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    public function performPaymentsDetailsApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
+    public function performPaymentDetailsApiCall(AdyenApiRequestTransfer $requestTransfer): AdyenApiResponseTransfer;
 
     /**
      * Specification:
