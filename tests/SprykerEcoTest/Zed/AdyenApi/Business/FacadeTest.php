@@ -7,7 +7,6 @@
 
 namespace SprykerEcoTest\Zed\AdyenApi\Business;
 
-use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\AdyenApiAdjustAuthorizationResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiAuthorize3dResponseTransfer;
 use Generated\Shared\Transfer\AdyenApiAuthorizeResponseTransfer;
@@ -27,30 +26,15 @@ use Generated\Shared\Transfer\AdyenApiTechnicalCancelResponseTransfer;
  * @group AdyenApi
  * @group Business
  */
-class FacadeTest extends Test
+class FacadeTest extends BaseSetUpTest
 {
-    /**
-     * @var \SprykerEcoTest\Zed\AdyenApi\Business\FacadeTestHelper
-     */
-    protected $helper;
-
-    /**
-     * @param \SprykerEcoTest\Zed\AdyenApi\Business\FacadeTestHelper $helper
-     *
-     * @return void
-     */
-    protected function _inject(FacadeTestHelper $helper)
-    {
-        $this->helper = $helper;
-    }
-
     /**
      * @return void
      */
     public function testPerformGetPaymentMethodsApiCall(): void
     {
-        $facade = $this->helper->createFacade();
-        $requestTransfer = $this->helper->createAdyenApiRequestTransfer();
+        $facade = $this->createFacade();
+        $requestTransfer = $this->createAdyenApiRequestTransfer();
         $responseTransfer = $facade->performGetPaymentMethodsApiCall($requestTransfer);
 
         $this->assertTrue($responseTransfer->getIsSuccess());
@@ -69,8 +53,8 @@ class FacadeTest extends Test
      */
     public function testPerformMakePaymentApiCall(): void
     {
-        $facade = $this->helper->createFacade();
-        $requestTransfer = $this->helper->createAdyenApiRequestTransfer();
+        $facade = $this->createFacade();
+        $requestTransfer = $this->createAdyenApiRequestTransfer();
         $responseTransfer = $facade->performMakePaymentApiCall($requestTransfer);
 
         $this->assertTrue($responseTransfer->getIsSuccess());
@@ -87,8 +71,8 @@ class FacadeTest extends Test
      */
     public function testPerformPaymentDetailsApiCall(): void
     {
-        $facade = $this->helper->createFacade();
-        $requestTransfer = $this->helper->createAdyenApiRequestTransfer();
+        $facade = $this->createFacade();
+        $requestTransfer = $this->createAdyenApiRequestTransfer();
         $responseTransfer = $facade->performPaymentDetailsApiCall($requestTransfer);
 
         $this->assertTrue($responseTransfer->getIsSuccess());
@@ -108,8 +92,8 @@ class FacadeTest extends Test
     {
         $this->markTestSkipped('Method isn\'t used.');
 
-        $facade = $this->helper->createFacade();
-        $requestTransfer = $this->helper->createAdyenApiRequestTransfer();
+        $facade = $this->createFacade();
+        $requestTransfer = $this->createAdyenApiRequestTransfer();
         $responseTransfer = $facade->performAuthorizeApiCall($requestTransfer);
 
         $this->assertTrue($responseTransfer->getIsSuccess());
@@ -127,8 +111,8 @@ class FacadeTest extends Test
     {
         $this->markTestSkipped('Method isn\'t used.');
 
-        $facade = $this->helper->createFacade();
-        $requestTransfer = $this->helper->createAdyenApiRequestTransfer();
+        $facade = $this->createFacade();
+        $requestTransfer = $this->createAdyenApiRequestTransfer();
         $responseTransfer = $facade->performAuthorize3dApiCall($requestTransfer);
 
         $this->assertTrue($responseTransfer->getIsSuccess());
@@ -144,8 +128,8 @@ class FacadeTest extends Test
      */
     public function testPerformCaptureApiCall(): void
     {
-        $facade = $this->helper->createFacade();
-        $requestTransfer = $this->helper->createAdyenApiRequestTransfer();
+        $facade = $this->createFacade();
+        $requestTransfer = $this->createAdyenApiRequestTransfer();
         $responseTransfer = $facade->performCaptureApiCall($requestTransfer);
 
         $this->assertTrue($responseTransfer->getIsSuccess());
@@ -156,7 +140,7 @@ class FacadeTest extends Test
         );
         $this->assertNotEmpty($responseTransfer->getCaptureResponse()->getPspReference());
         $this->assertNotEmpty($responseTransfer->getCaptureResponse()->getResponse());
-        $this->assertEquals(FacadeTestConstants::RESPONSE_CAPTURE_RECEIVED, $responseTransfer->getCaptureResponse()->getResponse());
+        $this->assertEquals(static::RESPONSE_CAPTURE_RECEIVED, $responseTransfer->getCaptureResponse()->getResponse());
     }
 
     /**
@@ -164,8 +148,8 @@ class FacadeTest extends Test
      */
     public function testPerformCancelApiCall(): void
     {
-        $facade = $this->helper->createFacade();
-        $requestTransfer = $this->helper->createAdyenApiRequestTransfer();
+        $facade = $this->createFacade();
+        $requestTransfer = $this->createAdyenApiRequestTransfer();
         $responseTransfer = $facade->performCancelApiCall($requestTransfer);
 
         $this->assertTrue($responseTransfer->getIsSuccess());
@@ -176,7 +160,7 @@ class FacadeTest extends Test
         );
         $this->assertNotEmpty($responseTransfer->getCancelResponse()->getPspReference());
         $this->assertNotEmpty($responseTransfer->getCancelResponse()->getResponse());
-        $this->assertEquals(FacadeTestConstants::RESPONSE_CANCEL_RECEIVED, $responseTransfer->getCancelResponse()->getResponse());
+        $this->assertEquals(static::RESPONSE_CANCEL_RECEIVED, $responseTransfer->getCancelResponse()->getResponse());
     }
 
     /**
@@ -184,8 +168,8 @@ class FacadeTest extends Test
      */
     public function testPerformRefundApiCall(): void
     {
-        $facade = $this->helper->createFacade();
-        $requestTransfer = $this->helper->createAdyenApiRequestTransfer();
+        $facade = $this->createFacade();
+        $requestTransfer = $this->createAdyenApiRequestTransfer();
         $responseTransfer = $facade->performRefundApiCall($requestTransfer);
 
         $this->assertTrue($responseTransfer->getIsSuccess());
@@ -196,7 +180,7 @@ class FacadeTest extends Test
         );
         $this->assertNotEmpty($responseTransfer->getRefundResponse()->getPspReference());
         $this->assertNotEmpty($responseTransfer->getRefundResponse()->getResponse());
-        $this->assertEquals(FacadeTestConstants::RESPONSE_REFUND_RECEIVED, $responseTransfer->getRefundResponse()->getResponse());
+        $this->assertEquals(static::RESPONSE_REFUND_RECEIVED, $responseTransfer->getRefundResponse()->getResponse());
     }
 
     /**
@@ -204,8 +188,8 @@ class FacadeTest extends Test
      */
     public function testPerformCancelOrRefundApiCall(): void
     {
-        $facade = $this->helper->createFacade();
-        $requestTransfer = $this->helper->createAdyenApiRequestTransfer();
+        $facade = $this->createFacade();
+        $requestTransfer = $this->createAdyenApiRequestTransfer();
         $responseTransfer = $facade->performCancelOrRefundApiCall($requestTransfer);
 
         $this->assertTrue($responseTransfer->getIsSuccess());
@@ -216,7 +200,7 @@ class FacadeTest extends Test
         );
         $this->assertNotEmpty($responseTransfer->getCancelOrRefundResponse()->getPspReference());
         $this->assertNotEmpty($responseTransfer->getCancelOrRefundResponse()->getResponse());
-        $this->assertEquals(FacadeTestConstants::RESPONSE_CANCEL_OR_REFUND_RECEIVED, $responseTransfer->getCancelOrRefundResponse()->getResponse());
+        $this->assertEquals(static::RESPONSE_CANCEL_OR_REFUND_RECEIVED, $responseTransfer->getCancelOrRefundResponse()->getResponse());
     }
 
     /**
@@ -226,8 +210,8 @@ class FacadeTest extends Test
     {
         $this->markTestSkipped('Method isn\'t used.');
 
-        $facade = $this->helper->createFacade();
-        $requestTransfer = $this->helper->createAdyenApiRequestTransfer();
+        $facade = $this->createFacade();
+        $requestTransfer = $this->createAdyenApiRequestTransfer();
         $responseTransfer = $facade->performTechnicalCancelApiCall($requestTransfer);
 
         $this->assertTrue($responseTransfer->getIsSuccess());
@@ -245,8 +229,8 @@ class FacadeTest extends Test
     {
         $this->markTestSkipped('Method isn\'t used.');
 
-        $facade = $this->helper->createFacade();
-        $requestTransfer = $this->helper->createAdyenApiRequestTransfer();
+        $facade = $this->createFacade();
+        $requestTransfer = $this->createAdyenApiRequestTransfer();
         $responseTransfer = $facade->performAdjustAuthorizationApiCall($requestTransfer);
 
         $this->assertTrue($responseTransfer->getIsSuccess());
