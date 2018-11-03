@@ -18,7 +18,7 @@ use SprykerEco\Zed\AdyenApi\Business\Adapter\CancelOrRefundAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\CaptureAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\GetPaymentMethodsAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\MakePaymentAdapter;
-use SprykerEco\Zed\AdyenApi\Business\Adapter\PaymentsDetailsAdapter;
+use SprykerEco\Zed\AdyenApi\Business\Adapter\PaymentDetailsAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\RefundAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Adapter\TechnicalCancelAdapter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\AdjustAuthorizationConverter;
@@ -30,7 +30,7 @@ use SprykerEco\Zed\AdyenApi\Business\Converter\CancelOrRefundConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\CaptureConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\GetPaymentMethodsConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\MakePaymentConverter;
-use SprykerEco\Zed\AdyenApi\Business\Converter\PaymentsDetailsConverter;
+use SprykerEco\Zed\AdyenApi\Business\Converter\PaymentDetailsConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\RefundConverter;
 use SprykerEco\Zed\AdyenApi\Business\Converter\TechnicalCancelConverter;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\AdjustAuthorizationMapper;
@@ -42,7 +42,7 @@ use SprykerEco\Zed\AdyenApi\Business\Mapper\CancelOrRefundMapper;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\CaptureMapper;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\GetPaymentMethodsMapper;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\MakePaymentMapper;
-use SprykerEco\Zed\AdyenApi\Business\Mapper\PaymentsDetailsMapper;
+use SprykerEco\Zed\AdyenApi\Business\Mapper\PaymentDetailsMapper;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\RefundMapper;
 use SprykerEco\Zed\AdyenApi\Business\Mapper\TechnicalCancelMapper;
 use SprykerEco\Zed\AdyenApi\Business\Request\AdyenApiRequest;
@@ -83,12 +83,12 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Request\AdyenApiRequestInterface
      */
-    public function createPaymentsDetailsRequest(): AdyenApiRequestInterface
+    public function createPaymentDetailsRequest(): AdyenApiRequestInterface
     {
         return new AdyenApiRequest(
-            $this->createPaymentsDetailsAdapter(),
-            $this->createPaymentsDetailsConverter(),
-            $this->createPaymentsDetailsMapper(),
+            $this->createPaymentDetailsAdapter(),
+            $this->createPaymentDetailsConverter(),
+            $this->createPaymentDetailsMapper(),
             $this->getConfig()
         );
     }
@@ -222,9 +222,9 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Adapter\AdyenApiAdapterInterface
      */
-    public function createPaymentsDetailsAdapter(): AdyenApiAdapterInterface
+    public function createPaymentDetailsAdapter(): AdyenApiAdapterInterface
     {
-        return new PaymentsDetailsAdapter(
+        return new PaymentDetailsAdapter(
             $this->getConfig(),
             $this->getUtilEncodingService()
         );
@@ -343,9 +343,9 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Converter\AdyenApiConverterInterface
      */
-    public function createPaymentsDetailsConverter(): AdyenApiConverterInterface
+    public function createPaymentDetailsConverter(): AdyenApiConverterInterface
     {
-        return new PaymentsDetailsConverter(
+        return new PaymentDetailsConverter(
             $this->getConfig(),
             $this->getUtilEncodingService()
         );
@@ -458,9 +458,9 @@ class AdyenApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\AdyenApi\Business\Mapper\AdyenApiMapperInterface
      */
-    public function createPaymentsDetailsMapper(): AdyenApiMapperInterface
+    public function createPaymentDetailsMapper(): AdyenApiMapperInterface
     {
-        return new PaymentsDetailsMapper($this->getConfig());
+        return new PaymentDetailsMapper($this->getConfig());
     }
 
     /**

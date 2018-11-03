@@ -9,7 +9,7 @@ namespace SprykerEco\Zed\AdyenApi\Business\Mapper;
 
 use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 
-class PaymentsDetailsMapper extends AbstractMapper implements AdyenApiMapperInterface
+class PaymentDetailsMapper extends AbstractMapper implements AdyenApiMapperInterface
 {
     /**
      * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $adyenApiRequestTransfer
@@ -20,7 +20,7 @@ class PaymentsDetailsMapper extends AbstractMapper implements AdyenApiMapperInte
     {
         $this->validateRequestTransfer($adyenApiRequestTransfer);
 
-        return $adyenApiRequestTransfer->getPaymentsDetailsRequest()->toArray(true, true);
+        return $adyenApiRequestTransfer->getPaymentDetailsRequest()->toArray(true, true);
     }
 
     /**
@@ -30,10 +30,10 @@ class PaymentsDetailsMapper extends AbstractMapper implements AdyenApiMapperInte
      */
     protected function validateRequestTransfer(AdyenApiRequestTransfer $adyenApiRequestTransfer): void
     {
-        $adyenApiRequestTransfer->requirePaymentsDetailsRequest();
+        $adyenApiRequestTransfer->requirePaymentDetailsRequest();
 
         $adyenApiRequestTransfer
-            ->getPaymentsDetailsRequest()
+            ->getPaymentDetailsRequest()
             ->requirePaymentData()
             ->requireDetails();
     }
