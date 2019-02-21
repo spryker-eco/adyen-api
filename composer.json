@@ -1,6 +1,6 @@
 {
   "name": "spryker-eco/adyen-api",
-  "description": "Adyen Api Module",
+  "description": "AdyenApi module",
   "license": "MIT",
   "require": {
     "php": ">=7.1",
