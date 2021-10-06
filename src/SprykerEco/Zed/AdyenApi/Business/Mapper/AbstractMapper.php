@@ -44,6 +44,7 @@ abstract class AbstractMapper
             if ($item instanceof ArrayObject) {
                 return $item->count() !== 0;
             }
+
             return !empty($item);
         });
 

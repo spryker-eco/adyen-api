@@ -15,9 +15,24 @@ use SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceInte
 
 abstract class AbstractAdapter implements AdyenApiAdapterInterface
 {
+    /**
+     * @var int
+     */
     protected const DEFAULT_TIMEOUT = 45;
+
+    /**
+     * @var string
+     */
     protected const HEADER_CONTENT_TYPE_KEY = 'Content-Type';
+
+    /**
+     * @var string
+     */
     protected const HEADER_CONTENT_TYPE_VALUE = 'application/json';
+
+    /**
+     * @var string
+     */
     protected const HEADER_X_API_KEY = 'X-API-Key';
 
     /**

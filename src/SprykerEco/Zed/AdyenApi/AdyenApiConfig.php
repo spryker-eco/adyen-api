@@ -13,6 +13,8 @@ use SprykerEco\Shared\AdyenApi\AdyenApiConstants;
 class AdyenApiConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @return string
      */
     public function getApiKey(): string
@@ -21,6 +23,8 @@ class AdyenApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getPaymentMethodsActionUrl(): string
@@ -29,6 +33,8 @@ class AdyenApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getMakePaymentActionUrl(): string
@@ -37,6 +43,8 @@ class AdyenApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getPaymentsDetailsActionUrl(): string
@@ -45,6 +53,8 @@ class AdyenApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getAuthorizeActionUrl(): string
@@ -53,6 +63,8 @@ class AdyenApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getAuthorize3dActionUrl(): string
@@ -61,6 +73,8 @@ class AdyenApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getCaptureActionUrl(): string
@@ -69,6 +83,8 @@ class AdyenApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getCancelActionUrl(): string
@@ -77,6 +93,8 @@ class AdyenApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getRefundActionUrl(): string
@@ -85,6 +103,8 @@ class AdyenApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getCancelOrRefundActionUrl(): string
@@ -93,6 +113,8 @@ class AdyenApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getTechnicalCancelActionUrl(): string
@@ -101,6 +123,8 @@ class AdyenApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getAdjustAuthorizationActionUrl(): string
