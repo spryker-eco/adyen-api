@@ -17,7 +17,7 @@ class AdyenApiDependencyProvider extends AbstractBundleDependencyProvider
     /**
      * @var string
      */
-    public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
+    protected const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
