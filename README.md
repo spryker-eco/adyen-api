@@ -1,4 +1,4 @@
-# Adyen Api Module
+# AdyenApi Module
 
 [![Build Status](https://travis-ci.org/spryker-eco/adyen-api.svg?branch=master)](https://travis-ci.org/spryker-eco/adyen-api)
 [![License](https://img.shields.io/github/license/spryker-eco/adyen-api.svg?b=master)](https://github.com/spryker-eco/adyen-api)
