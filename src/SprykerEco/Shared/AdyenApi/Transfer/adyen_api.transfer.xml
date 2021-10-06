@@ -30,13 +30,13 @@
         <!-- Required! -->
         <property name="amount" type="AdyenApiAmount" />
         <property name="merchantAccount" type="string" />
-        <property name="paymentMethod" type="array" />
+        <property name="paymentMethod" type="array" singular="paymentMethodItem"/>
         <property name="reference" type="string" />  <!-- (transaction ID) max length 80 -->
         <property name="returnUrl" type="string" />
 
         <!-- Optional -->
         <property name="selectedBrand" type="string" />
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="billingAddress" type="AdyenApiAddress" />
         <property name="captureDelayHours" type="int" />
         <property name="channel" type="string" />   <!-- Web -->
@@ -54,7 +54,7 @@
         <property name="shopperStatement" type="string" />  <!-- The text to appear on the shopper's bank statement. -->
         <property name="socialSecurityNumber" type="string" />  <!-- The shopper's social security number -->
         <property name="telephoneNumber" type="string" />
-        <property name="lineItems" type="AdyenApiLineItem[]" />
+        <property name="lineItems" type="AdyenApiLineItem[]" singular="lineItemsItem"/>
     </transfer>
 
     <transfer name="AdyenApiAmount">
@@ -100,12 +100,12 @@
 
     <transfer name="AdyenApiPaymentDetailsRequest">
         <property name="paymentData" type="string" />
-        <property name="details" type="array" />
+        <property name="details" type="array" singular="detailsItem"/>
     </transfer>
 
     <transfer name="AdyenApiAuthorizeRequest">
         <property name="additionalAmount" type="AdyenApiAmount" />
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="amount" type="AdyenApiAmount" />
         <property name="bankAccount" type="AdyenApiBankAccount" />
         <property name="billingAddress" type="AdyenApiAddress" />
@@ -122,8 +122,8 @@
         <property name="mcc" type="string" />
         <property name="merchantAccount" type="string" />
         <property name="merchantOrderReference" type="string" />
-        <property name="metadata" type="array" />
-        <property name="mpiData" type="array" />
+        <property name="metadata" type="array" singular="metadataItem"/>
+        <property name="mpiData" type="array" singular="mpiDataItem"/>
         <property name="nationality" type="string" />
         <property name="orderReference" type="string" />
         <property name="reference" type="string" />
@@ -138,12 +138,12 @@
         <property name="store" type="string" />
         <property name="telephoneNumber" type="string" />
         <property name="totalsGroup" type="string" />
-        <property name="shopperName" type="array" />
+        <property name="shopperName" type="array" singular="shopperNameItem"/>
     </transfer>
 
     <transfer name="AdyenApiAuthorize3dRequest">
         <property name="additionalAmount" type="AdyenApiAmount" />
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="amount" type="AdyenApiAmount" />
         <property name="billingAddress" type="AdyenApiAddress" />
         <property name="browserInfo" type="AdyenApiBrowserInfo" />
@@ -158,7 +158,7 @@
         <property name="md" type="string" />
         <property name="merchantAccount" type="string" />
         <property name="merchantOrderReference" type="string" />
-        <property name="metadata" type="array" />
+        <property name="metadata" type="array" singular="metadataItem"/>
         <property name="orderReference" type="string" />
         <property name="paResponse" type="string" />
         <property name="reference" type="string" />
@@ -174,7 +174,7 @@
         <property name="store" type="string" />
         <property name="telephoneNumber" type="string" />
         <property name="totalsGroup" type="string" />
-        <property name="shopperName" type="array" />
+        <property name="shopperName" type="array" singular="shopperNameItem"/>
     </transfer>
 
     <transfer name="AdyenApiBankAccount">
@@ -210,7 +210,7 @@
     </transfer>
 
     <transfer name="AdyenApiCaptureRequest">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="merchantAccount" type="string" />
         <property name="modificationAmount" type="AdyenApiAmount" />
         <property name="originalMerchantReference" type="string" />
@@ -221,7 +221,7 @@
     </transfer>
 
     <transfer name="AdyenApiCancelRequest">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="merchantAccount" type="string" />
         <property name="originalMerchantReference" type="string" />
         <property name="originalReference" type="string" />
@@ -231,7 +231,7 @@
     </transfer>
 
     <transfer name="AdyenApiRefundRequest">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="merchantAccount" type="string" />
         <property name="modificationAmount" type="AdyenApiAmount" />
         <property name="originalMerchantReference" type="string" />
@@ -242,7 +242,7 @@
     </transfer>
 
     <transfer name="AdyenApiCancelOrRefundRequest">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="merchantAccount" type="string" />
         <property name="modificationAmount" type="AdyenApiAmount" />
         <property name="originalMerchantReference" type="string" />
@@ -253,7 +253,7 @@
     </transfer>
 
     <transfer name="AdyenApiTechnicalCancelRequest">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="merchantAccount" type="string" />
         <property name="originalMerchantReference" type="string" />
         <property name="originalReference" type="string" />
@@ -263,7 +263,7 @@
     </transfer>
 
     <transfer name="AdyenApiAdjustAuthorizationRequest">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="merchantAccount" type="string" />
         <property name="modificationAmount" type="AdyenApiAmount" />
         <property name="originalMerchantReference" type="string" />
@@ -279,7 +279,7 @@
     <transfer name="AdyenApiResponse">
         <property name="isSuccess" type="bool" />
         <property name="error" type="AdyenApiErrorResponse" />
-        <property name="paymentMethods" type="AdyenApiPaymentMethod[]" />
+        <property name="paymentMethods" type="AdyenApiPaymentMethod[]" singular="paymentMethodsItem"/>
         <property name="makePaymentResponse" type="AdyenApiMakePaymentResponse" />
         <property name="paymentDetailsResponse" type="AdyenApiPaymentDetailsResponse" />
         <property name="authorizeResponse" type="AdyenApiAuthorizeResponse" />
@@ -302,22 +302,22 @@
     <transfer name="AdyenApiPaymentMethod">
         <property name="name" type="string" />
         <property name="type" type="string" />
-        <property name="details" type="array" />
+        <property name="details" type="array" singular="detailsItem"/>
     </transfer>
 
     <transfer name="AdyenApiMakePaymentResponse">
         <property name="pspReference" type="string" />
         <property name="resultCode" type="string" />
         <property name="refusalReason" type="string" />
-        <property name="additionalData" type="array" />
-        <property name="details" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
+        <property name="details" type="array" singular="Item"/>
         <property name="paymentData" type="string" />
-        <property name="fraudResult" type="array" />
+        <property name="fraudResult" type="array" singular="fraudResultItem"/>
         <property name="redirect" type="AdyenApiMakePaymentResponseRedirect" />
     </transfer>
 
     <transfer name="AdyenApiMakePaymentResponseRedirect">
-        <property name="data" type="array" />
+        <property name="data" type="array" singular="dataItem"/>
         <property name="method" type="string" />
         <property name="url" type="string" />
     </transfer>
@@ -326,19 +326,19 @@
         <property name="pspReference" type="string" />
         <property name="resultCode" type="string" />
         <property name="refusalReason" type="string" />
-        <property name="additionalData" type="array" />
-        <property name="details" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
+        <property name="details" type="array" singular="detailsItem"/>
         <property name="paymentData" type="string" />
-        <property name="fraudResult" type="array" />
+        <property name="fraudResult" type="array" singular="fraudResultItem"/>
         <property name="redirect" type="AdyenApiMakePaymentResponseRedirect" />
     </transfer>
 
     <transfer name="AdyenApiAuthorizeResponse">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="authCode" type="string" />
         <property name="dccAmount" type="AdyenApiAmount" />
         <property name="dccSignature" type="string" />
-        <property name="fraudResult" type="array" />
+        <property name="fraudResult" type="array" singular="fraudResultItem"/>
         <property name="issuerUrl" type="string" />
         <property name="md" type="string" />
         <property name="paRequest" type="string" />
@@ -348,11 +348,11 @@
     </transfer>
 
     <transfer name="AdyenApiAuthorize3dResponse">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="authCode" type="string" />
         <property name="dccAmount" type="AdyenApiAmount" />
         <property name="dccSignature" type="string" />
-        <property name="fraudResult" type="array" />
+        <property name="fraudResult" type="array" singular="fraudResultItem"/>
         <property name="issuerUrl" type="string" />
         <property name="md" type="string" />
         <property name="paRequest" type="string" />
@@ -362,37 +362,37 @@
     </transfer>
 
     <transfer name="AdyenApiCaptureResponse">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="pspReference" type="string" />
         <property name="response" type="string" />
     </transfer>
 
     <transfer name="AdyenApiCancelResponse">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="pspReference" type="string" />
         <property name="response" type="string" />
     </transfer>
 
     <transfer name="AdyenApiRefundResponse">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="pspReference" type="string" />
         <property name="response" type="string" />
     </transfer>
 
     <transfer name="AdyenApiCancelOrRefundResponse">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="pspReference" type="string" />
         <property name="response" type="string" />
     </transfer>
 
     <transfer name="AdyenApiTechnicalCancelResponse">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="pspReference" type="string" />
         <property name="response" type="string" />
     </transfer>
 
     <transfer name="AdyenApiAdjustAuthorizationResponse">
-        <property name="additionalData" type="array" />
+        <property name="additionalData" type="array" singular="additionalDataItem"/>
         <property name="pspReference" type="string" />
         <property name="response" type="string" />
     </transfer>
