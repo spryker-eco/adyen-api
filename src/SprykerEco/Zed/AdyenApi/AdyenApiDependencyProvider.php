@@ -38,7 +38,7 @@ class AdyenApiDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addUtilEncodingService(Container $container): Container
     {
-        $container[static::SERVICE_UTIL_ENCODING] = function (Container $container) {
+        $container[static::SERVICE_UTIL_ENCODING] = function (Container $container): Dependency\Service\AdyenApiToUtilEncodingServiceBridge {
             return new AdyenApiToUtilEncodingServiceBridge($container->getLocator()->utilEncoding()->service());
         };
 
