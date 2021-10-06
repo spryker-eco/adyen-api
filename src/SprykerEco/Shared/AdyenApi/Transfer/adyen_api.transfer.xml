@@ -310,7 +310,7 @@
         <property name="resultCode" type="string"/>
         <property name="refusalReason" type="string"/>
         <property name="additionalData" type="array" singular="additionalDataItem"/>
-        <property name="details" type="array" singular="Item"/>
+        <property name="details" type="array" singular="detailsItem"/>
         <property name="paymentData" type="string"/>
         <property name="fraudResult" type="array" singular="fraudResultItem"/>
         <property name="redirect" type="AdyenApiMakePaymentResponseRedirect"/>
