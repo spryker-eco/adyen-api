@@ -7,7 +7,6 @@
 
 namespace SprykerEco\Zed\AdyenApi;
 
-use Dependency\Service\AdyenApiToUtilEncodingServiceBridge as DependencyAdyenApiToUtilEncodingServiceBridge;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 use SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceBridge;
@@ -39,7 +38,7 @@ class AdyenApiDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addUtilEncodingService(Container $container): Container
     {
-        $container[static::SERVICE_UTIL_ENCODING] = function (Container $container): DependencyAdyenApiToUtilEncodingServiceBridge {
+        $container[static::SERVICE_UTIL_ENCODING] = function (Container $container): AdyenApiToUtilEncodingServiceBridge {
             return new AdyenApiToUtilEncodingServiceBridge($container->getLocator()->utilEncoding()->service());
         };
 
