@@ -16,7 +16,7 @@ class AdyenApiDependencyProvider extends AbstractBundleDependencyProvider
     /**
      * @var string
      */
-    protected const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
+    public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -38,9 +38,9 @@ class AdyenApiDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addUtilEncodingService(Container $container): Container
     {
-        $container[static::SERVICE_UTIL_ENCODING] = function (Container $container): AdyenApiToUtilEncodingServiceBridge {
+        $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
             return new AdyenApiToUtilEncodingServiceBridge($container->getLocator()->utilEncoding()->service());
-        };
+        });
 
         return $container;
     }
