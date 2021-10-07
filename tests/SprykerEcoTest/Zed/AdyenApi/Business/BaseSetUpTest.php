@@ -82,7 +82,7 @@ class BaseSetUpTest extends Test
     public const REQUEST_DETAILS_PAYMENT_DATA = 'request-details-payment-data-string';
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     public const REQUEST_DETAILS = [
         'MD' => 'md-test-string',
@@ -90,12 +90,12 @@ class BaseSetUpTest extends Test
     ];
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     public const REQUEST_PAYLOAD_CREDIT_CARD = ['type' => 'scheme'];
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     public const RESPONSE_HEADERS = [
         'Date' => 'Sat, 27 Oct 2018 12:09:29 GMT',
