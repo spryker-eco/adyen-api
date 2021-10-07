@@ -49,7 +49,11 @@ abstract class AbstractMapper
         });
 
         foreach ($data as $key => $value) {
-            if (is_array($value) || $value instanceof ArrayObject) {
+            if ($value instanceof ArrayObject) {
+                $value = $value->getArrayCopy();
+            }
+
+            if (is_array($value)) {
                 $data[$key] = $this->removeRedundantParams($value);
             }
         }

@@ -13,10 +13,10 @@ use Psr\Http\Message\ResponseInterface;
 interface AdyenApiConverterInterface
 {
     /**
-     * @param \Psr\Http\Message\ResponseInterface $response
+     * @param \Psr\Http\Message\ResponseInterface|null $response
      * @param bool $isSuccess
      *
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    public function convertToResponseTransfer(ResponseInterface $response, $isSuccess = true): AdyenApiResponseTransfer;
+    public function convertToResponseTransfer(?ResponseInterface $response = null, $isSuccess = true): AdyenApiResponseTransfer;
 }
