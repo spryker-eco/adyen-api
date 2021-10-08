@@ -12,15 +12,15 @@ use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 class GetPaymentMethodsMapper extends AbstractMapper implements AdyenApiMapperInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $adyenApiRequestTransfer
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
      *
      * @return array
      */
-    public function buildRequestArray(AdyenApiRequestTransfer $adyenApiRequestTransfer): array
+    public function buildRequestArray(AdyenApiRequestTransfer $requestTransfer): array
     {
-        $this->validateRequestTransfer($adyenApiRequestTransfer);
+        $this->validateRequestTransfer($requestTransfer);
 
-        return $adyenApiRequestTransfer->getPaymentMethodsRequest()->toArray(true, true);
+        return $requestTransfer->getPaymentMethodsRequest()->toArray(true, true);
     }
 
     /**

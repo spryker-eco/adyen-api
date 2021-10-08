@@ -12,15 +12,15 @@ use Generated\Shared\Transfer\AdyenApiRequestTransfer;
 class AdjustAuthorizationMapper extends AbstractMapper implements AdyenApiMapperInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $adyenApiRequestTransfer
+     * @param \Generated\Shared\Transfer\AdyenApiRequestTransfer $requestTransfer
      *
      * @return array
      */
-    public function buildRequestArray(AdyenApiRequestTransfer $adyenApiRequestTransfer): array
+    public function buildRequestArray(AdyenApiRequestTransfer $requestTransfer): array
     {
-        $this->validateRequestTransfer($adyenApiRequestTransfer);
+        $this->validateRequestTransfer($requestTransfer);
 
-        $requestDataArray = $adyenApiRequestTransfer->getAdjustAuthorizationRequest()->toArray(true, true);
+        $requestDataArray = $requestTransfer->getAdjustAuthorizationRequest()->toArray(true, true);
 
         return $this->removeRedundantParams($requestDataArray);
     }
