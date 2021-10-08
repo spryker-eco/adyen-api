@@ -3,19 +3,6 @@
     "warning": [
         {
             "severity": "info",
-            "line_from": 85,
-            "line_to": 85,
-            "type": "PossiblyUndefinedVariable",
-            "message": "Possibly undefined variable $options, first seen on line 85",
-            "file_name": "vendor/spryker-eco/adyen-api/src/SprykerEco/Zed/AdyenApi/Business/Adapter/AbstractAdapter.php",
-            "snippet": "        $options[RequestOptions::BODY] = $this->encodingService->encodeJson($data);",
-            "selected_text": "$options",
-            "error_level": 3,
-            "shortcode": 18,
-            "other_references": null
-        },
-        {
-            "severity": "info",
             "line_from": 61,
             "line_to": 61,
             "type": "PossiblyNullArgument",
