@@ -82,9 +82,7 @@ abstract class AbstractAdapter implements AdyenApiAdapterInterface
      */
     public function sendRequest(array $data): ResponseInterface
     {
-        $options[RequestOptions::BODY] = $this->encodingService->encodeJson($data);
-
-        return $this->send($options);
+        return $this->send([RequestOptions::BODY => $this->encodingService->encodeJson($data)]);
     }
 
     /**
