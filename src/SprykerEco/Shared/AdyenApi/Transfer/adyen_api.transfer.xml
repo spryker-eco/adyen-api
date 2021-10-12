@@ -279,7 +279,7 @@
     <transfer name="AdyenApiResponse">
         <property name="isSuccess" type="bool"/>
         <property name="error" type="AdyenApiErrorResponse"/>
-        <property name="paymentMethods" type="AdyenApiPaymentMethod[]" singular="paymentMethods"/>
+        <property name="paymentMethods" type="AdyenApiPaymentMethod[]" singular="paymentMethod"/>
         <property name="makePaymentResponse" type="AdyenApiMakePaymentResponse"/>
         <property name="paymentDetailsResponse" type="AdyenApiPaymentDetailsResponse"/>
         <property name="authorizeResponse" type="AdyenApiAuthorizeResponse"/>
