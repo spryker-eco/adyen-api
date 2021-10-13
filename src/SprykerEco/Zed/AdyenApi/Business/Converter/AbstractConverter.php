@@ -46,14 +46,14 @@ abstract class AbstractConverter implements AdyenApiConverterInterface
     }
 
     /**
-     * @param \Psr\Http\Message\ResponseInterface $response
+     * @param \Psr\Http\Message\ResponseInterface|null $response
      * @param bool $isSuccess
      *
      * @return \Generated\Shared\Transfer\AdyenApiResponseTransfer
      */
-    public function convertToResponseTransfer(ResponseInterface $response, $isSuccess = true): AdyenApiResponseTransfer
+    public function convertToResponseTransfer(?ResponseInterface $response = null, $isSuccess = true): AdyenApiResponseTransfer
     {
-        $responseBody = $this->encodingService->decodeJson($response->getBody(), true);
+        $responseBody = $response ? $this->encodingService->decodeJson($response->getBody(), true) : [];
         $responseTransfer = new AdyenApiResponseTransfer();
         $responseTransfer->setIsSuccess($isSuccess);
 

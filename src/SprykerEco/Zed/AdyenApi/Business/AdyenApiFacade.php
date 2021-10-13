@@ -17,7 +17,7 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -31,7 +31,7 @@ class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -45,7 +45,7 @@ class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -59,7 +59,7 @@ class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -73,7 +73,7 @@ class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -87,7 +87,7 @@ class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -101,7 +101,7 @@ class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -115,7 +115,7 @@ class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -129,7 +129,7 @@ class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -143,7 +143,7 @@ class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -157,7 +157,7 @@ class AdyenApiFacade extends AbstractFacade implements AdyenApiFacadeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
