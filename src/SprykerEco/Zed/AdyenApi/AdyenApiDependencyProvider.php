@@ -11,6 +11,9 @@ use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 use SprykerEco\Zed\AdyenApi\Dependency\Service\AdyenApiToUtilEncodingServiceBridge;
 
+/**
+ * @method \SprykerEco\Zed\AdyenApi\AdyenApiConfig getConfig()
+ */
 class AdyenApiDependencyProvider extends AbstractBundleDependencyProvider
 {
     /**
